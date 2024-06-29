@@ -1,0 +1,8 @@
+
+*.xml
+*.pyc
+*.iml
+*.iml
+.idea/workspace.xml
+.idea/inspectionProfiles/profiles_settings.xml
+.idea/EspoCRM_Automation.iml

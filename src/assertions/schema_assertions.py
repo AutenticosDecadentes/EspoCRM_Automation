@@ -15,8 +15,8 @@ class AssertionSchemas:
 
     @staticmethod
     def assert_equipo_lista_schema_file(response):
-        return SchemaValidator.validate_json_schema(response, "equipo_lista_schema.json")
+        return AssertionSchemas().validate_json_schema(response, "equipo_lista_schema.json")
 
     @staticmethod
     def assert_equipo_sin_select_schema_file(response):
-        return SchemaValidator.validate_json_schema(response, "equipo_sin_select_schema.json")
+        return AssertionSchemas().validate_json_schema(response, "equipo_sin_select_schema.json")

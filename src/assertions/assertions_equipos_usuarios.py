@@ -1,10 +1,10 @@
 import jsonschema
 import pytest
-from src.schemas.equipo_usuario_schema import meeting_schema
+from src.utils.load_resources import load_schema_resource
 
 
 def assert_login_schema_file(response):
-    schema = meeting_schema
+    schema = load_schema_resource("login_schema.json")
     try:
         jsonschema.validate(instance=response, schema=schema)
         return True

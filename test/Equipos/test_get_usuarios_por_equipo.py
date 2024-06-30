@@ -1,9 +1,9 @@
 import requests
-import pytest
 from jsonschema import validate
 from config import BASE_URI
-from src.schemas.equipo_usuario_schema import meeting_schema
-from src.schemas.endpoints.endpoints import build_url, Endpoint
+from conftest import get_headers
+from src.resources.schemas.equipo_usuario_schema import meeting_schema
+from src.endpoints.endpoints import build_url
 
 
 def test_datos_por_defecto(get_headers):

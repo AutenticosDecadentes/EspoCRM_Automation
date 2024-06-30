@@ -1,5 +1,6 @@
 import requests
 import pytest
+from conftest import get_headers
 from config import BASE_URI
 def test_login_valido(get_headers):
     url = f'{BASE_URI}/App/user'

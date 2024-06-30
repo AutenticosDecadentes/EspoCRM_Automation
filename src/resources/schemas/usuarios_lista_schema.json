@@ -1,0 +1,93 @@
+{
+    "type": "object",
+    "required": [
+        "list",
+        "total"
+    ],
+    "properties": {
+        "total": {
+            "type": "integer"
+        },
+        "list": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "userName": {
+                        "type": "string"
+                    },
+                    "type": {
+                        "type": "string"
+                    },
+                    "salutationName": {
+                        "type": "string"
+                    },
+                    "firstName": {
+                        "type": [
+                            "null",
+                            "string"
+                        ]
+                    },
+                    "lastName": {
+                        "type": "string"
+                    },
+                    "isActive": {
+                        "type": "boolean"
+                    },
+                    "title": {
+                        "type": [
+                            "null",
+                            "string"
+                        ]
+                    },
+                    "emailAddress": {
+                        "type": [
+                            "null",
+                            "string"
+                        ]
+                    },
+                    "middleName": {
+                        "type": "null"
+                    },
+                    "emailAddressIsOptedOut": {
+                        "type": [
+                            "boolean",
+                            "null"
+                        ]
+                    },
+                    "emailAddressIsInvalid": {
+                        "type": [
+                            "boolean",
+                            "null"
+                        ]
+                    },
+                    "createdById": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "createdById",
+                    "emailAddress",
+                    "emailAddressIsInvalid",
+                    "emailAddressIsOptedOut",
+                    "firstName",
+                    "id",
+                    "isActive",
+                    "lastName",
+                    "middleName",
+                    "name",
+                    "salutationName",
+                    "title",
+                    "type",
+                    "userName"
+                ]
+            }
+        }
+    }
+}

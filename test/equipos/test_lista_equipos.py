@@ -88,3 +88,22 @@ def test_lista_equipos_maxsize_string(get_headers):
     # Status code esperado 400 bad request
     response = Authentication().authenticate_valid_user(get_headers, Endpoint.LISTA_EQUIPOS(maxSize="string"), 'GET')
     AssertionEquipos().assert_status_code(response, 200)
+
+
+def test_lista_equipos_offset_cero(get_headers):
+    response = Authentication().authenticate_valid_user(get_headers, Endpoint.LISTA_EQUIPOS(offset=0), 'GET')
+    AssertionEquipos().assert_status_code(response, 200)
+    AssertionSchemas().assert_equipo_lista_schema_file(response.json())
+
+
+def test_lista_equipos_offset_negative(get_headers):
+    # Status code esperado 400 bad request
+    response = Authentication().authenticate_valid_user(get_headers, Endpoint.LISTA_EQUIPOS(offset=-1), 'GET')
+    AssertionEquipos().assert_status_code(response, 500)
+    AssertionEquipos().assert_response_vacio(response.text)
+
+
+def test_lista_equipos_offset_string(get_headers):
+    # Status code esperado 400 bad request
+    response = Authentication().authenticate_valid_user(get_headers, Endpoint.LISTA_EQUIPOS(offset="string"), 'GET')
+    AssertionEquipos().assert_status_code(response, 200)

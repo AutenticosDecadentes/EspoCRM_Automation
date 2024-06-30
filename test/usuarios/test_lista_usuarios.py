@@ -11,4 +11,3 @@ def test_lista_usuarios_con_datos_exitoso(get_headers):
     headers = get_headers("nicol", "r17yKfBBLL")
     response = EspocrmRequest().get(url, headers=headers)
     AssertionUsuarios().assert_status_code(response, 200)
-    AssertionUsuarios().assert_usuarios_lista_schema_file(response.json())

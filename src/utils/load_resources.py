@@ -12,3 +12,12 @@ def resources_schemas_path(path):
 def load_schema_resource(filename):
     with resources_schemas_path(filename).open() as f:
         return json.load(f)
+
+
+def resources_credential_path(path):
+    return BASE / "resources" / "credentials" / path
+
+
+def load_credential_resource(filename):
+    with resources_credential_path(filename).open() as f:
+        return json.load(f)

@@ -56,20 +56,6 @@ def test_lista_equipos_offser_mayor_al_total(get_headers):
     AssertionEquipos().assert_empty_list(response.json(), "list")
 
 
-def test_lista_equipos_orden_asc(get_headers):
-    response = Authentication().authenticate_valid_user(get_headers, Endpoint.LISTA_EQUIPOS(order='asc'), 'GET')
-    AssertionEquipos().assert_status_code(response, 200)
-    AssertionSchemas().assert_equipo_lista_schema_file(response.json())
-    AssertionEquipos().assert_check_orden(response.json(), 'asc')
-
-
-def test_lista_equipos_orden_desc(get_headers):
-    response = Authentication().authenticate_valid_user(get_headers, Endpoint.LISTA_EQUIPOS(order='desc'), 'GET')
-    AssertionEquipos().assert_status_code(response, 200)
-    AssertionSchemas().assert_equipo_lista_schema_file(response.json())
-    AssertionEquipos().assert_check_orden(response.json(), 'desc')
-
-
 def test_lista_equipos_maxsize_cero(get_headers):
     response = Authentication().authenticate_valid_user(get_headers, Endpoint.LISTA_EQUIPOS(maxSize=0), 'GET')
     AssertionEquipos().assert_status_code(response, 200)
@@ -107,3 +93,23 @@ def test_lista_equipos_offset_string(get_headers):
     # Status code esperado 400 bad request
     response = Authentication().authenticate_valid_user(get_headers, Endpoint.LISTA_EQUIPOS(offset="string"), 'GET')
     AssertionEquipos().assert_status_code(response, 200)
+
+
+def test_lista_equipos_orden_asc(get_headers):
+    response = Authentication().authenticate_valid_user(get_headers, Endpoint.LISTA_EQUIPOS(order='asc'), 'GET')
+    AssertionEquipos().assert_status_code(response, 200)
+    AssertionSchemas().assert_equipo_lista_schema_file(response.json())
+    AssertionEquipos().assert_check_orden(response.json(), 'asc')
+
+
+def test_lista_equipos_orden_desc(get_headers):
+    response = Authentication().authenticate_valid_user(get_headers, Endpoint.LISTA_EQUIPOS(order='desc'), 'GET')
+    AssertionEquipos().assert_status_code(response, 200)
+    AssertionSchemas().assert_equipo_lista_schema_file(response.json())
+    AssertionEquipos().assert_check_orden(response.json(), 'desc')
+
+
+def test_lista_equipos_orden_invalido(get_headers):
+    response = Authentication().authenticate_valid_user(get_headers, Endpoint.LISTA_EQUIPOS(order='invalid'), 'GET')
+    AssertionEquipos().assert_status_code(response, 400)
+    AssertionEquipos().assert_response_vacio(response.text)

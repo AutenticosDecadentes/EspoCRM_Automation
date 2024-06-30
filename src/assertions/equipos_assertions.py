@@ -24,4 +24,8 @@ class AssertionEquipos:
         elif orden == "desc":
             assert lista == sorted(lista, reverse=True), "La lista de equipos no esta en orden desc"
         else:
-            pytest.fail(f"Orden '{orden}' inalido")
+            pytest.fail(f"Orden '{orden}' invalido")
+
+    @staticmethod
+    def assert_response_vacio(response_text):
+        assert response_text == ''

@@ -28,6 +28,7 @@ def test_lista_equipos_sin_select(get_headers):
 def test_lista_equipos_autenficacion_invalida(get_headers):
     response = Authentication().authenticate_invalid_user(get_headers, Endpoint.LISTA_EQUIPOS(), 'GET')
     AssertionEquipos().assert_status_code(response, 401)
+    AssertionEquipos().assert_response_vacio(response.text)
 
 
 def test_lista_equipos_select_desconocido(get_headers):
@@ -39,6 +40,7 @@ def test_lista_equipos_select_desconocido(get_headers):
 def test_lista_equipos_sin_autorizacion(get_headers):
     response = Authentication().authenticate_no_authorization_equipos(get_headers, Endpoint.LISTA_EQUIPOS(), 'GET')
     AssertionEquipos().assert_status_code(response, 403)
+    AssertionEquipos().assert_response_vacio(response.text)
 
 
 def test_lista_equipos_maxsize_mayor_al_total(get_headers):
@@ -66,3 +68,23 @@ def test_lista_equipos_orden_desc(get_headers):
     AssertionEquipos().assert_status_code(response, 200)
     AssertionSchemas().assert_equipo_lista_schema_file(response.json())
     AssertionEquipos().assert_check_orden(response.json(), 'desc')
+
+
+def test_lista_equipos_maxsize_cero(get_headers):
+    response = Authentication().authenticate_valid_user(get_headers, Endpoint.LISTA_EQUIPOS(maxSize=0), 'GET')
+    AssertionEquipos().assert_status_code(response, 200)
+    AssertionSchemas().assert_equipo_lista_schema_file(response.json())
+    AssertionEquipos().assert_empty_list(response.json(), 'list')
+
+
+def test_lista_equipos_maxsize_negative(get_headers):
+    # Status code esperado 400 bad request
+    response = Authentication().authenticate_valid_user(get_headers, Endpoint.LISTA_EQUIPOS(maxSize=-1), 'GET')
+    AssertionEquipos().assert_status_code(response, 500)
+    AssertionEquipos().assert_response_vacio(response.text)
+
+
+def test_lista_equipos_maxsize_string(get_headers):
+    # Status code esperado 400 bad request
+    response = Authentication().authenticate_valid_user(get_headers, Endpoint.LISTA_EQUIPOS(maxSize="string"), 'GET')
+    AssertionEquipos().assert_status_code(response, 200)

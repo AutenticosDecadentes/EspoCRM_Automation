@@ -7,7 +7,7 @@ BASE = Path(__file__).absolute().parent.parent
 
 
 def resources_schemas_path(path):
-    return BASE / "schemas" / path
+    return BASE / "resources" / "schemas"/ path
 
 
 def load_schema_resource(filename):

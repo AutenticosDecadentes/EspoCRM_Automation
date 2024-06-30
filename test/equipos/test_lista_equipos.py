@@ -25,16 +25,23 @@ def test_lista_equipos_sin_select(get_headers):
     AssertionSchemas().assert_equipo_sin_select_schema_file(response.json())
 
 
-def test_lista_equipos_autenficacion_invalida(get_headers):
-    response = Authentication().authenticate_invalid_user(get_headers, Endpoint.LISTA_EQUIPOS(), 'GET')
-    AssertionEquipos().assert_status_code(response, 401)
-    AssertionEquipos().assert_response_vacio(response.text)
-
-
 def test_lista_equipos_select_desconocido(get_headers):
     response = Authentication().authenticate_valid_user(get_headers, Endpoint.LISTA_EQUIPOS(select="unknown"), 'GET')
     AssertionEquipos().assert_status_code(response, 200)
     AssertionSchemas().assert_equipo_lista_schema_file(response.json())
+
+
+def test_lista_equipos_select_especiales(get_headers):
+    response = Authentication().authenticate_valid_user(get_headers, Endpoint.LISTA_EQUIPOS(select="***"), 'GET')
+    AssertionEquipos().assert_status_code(response, 200)
+    AssertionSchemas().assert_equipo_lista_schema_file(response.json())
+    AssertionEquipos().assert_list_no_empty(response.json())
+
+
+def test_lista_equipos_autenficacion_invalida(get_headers):
+    response = Authentication().authenticate_invalid_user(get_headers, Endpoint.LISTA_EQUIPOS(), 'GET')
+    AssertionEquipos().assert_status_code(response, 401)
+    AssertionEquipos().assert_response_vacio(response.text)
 
 
 def test_lista_equipos_sin_autorizacion(get_headers):

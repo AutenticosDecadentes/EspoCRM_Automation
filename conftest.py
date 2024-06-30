@@ -2,6 +2,8 @@ import pytest
 import requests
 import base64
 from config import BASE_URI, X_Api_Key
+
+
 @pytest.fixture
 def get_headers():
     def _get_headers(username, password):

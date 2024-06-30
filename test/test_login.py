@@ -5,6 +5,7 @@ def test_login_valido(get_headers):
     url = f'{BASE_URI}/App/user'
     headers = get_headers("junior", "junior1")
     response = requests.get(url, headers=headers)
+    print("liocapisimo", response.json())
     assert response.status_code == 200
 
 def test_login_invalido(get_headers):

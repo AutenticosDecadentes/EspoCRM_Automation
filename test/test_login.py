@@ -1,50 +1,19 @@
-import requests
-import pytest
-from conftest import get_headers
-from config import BASE_URI
+from src.assertions.equipos_assertions import AssertionEquipos
+from src.espocrm_api.endpoint import Endpoint
+from src.resources.authentications.authentication import Authentication
+
+
+
 def test_login_valido(get_headers):
-    url = f'{BASE_URI}/App/user'
-    headers = get_headers("junior", "junior1")
-    response = requests.get(url, headers=headers)
-    assert response.status_code == 200
+    response = Authentication().authenticate_valid_user(get_headers, Endpoint.LOGIN.value, 'GET')
+    AssertionEquipos.assert_status_code(response, 200)
+
 
 def test_login_invalido(get_headers):
-    url = f'{BASE_URI}/App/user'
-    headers = get_headers("incorrecto", "incorrecto")
-    response = requests.get(url, headers=headers)
-    assert response.status_code == 401
+    response = Authentication().authenticate_invalid_user(get_headers, Endpoint.LOGIN.value, 'GET')
+    AssertionEquipos.assert_status_code(response, 401)
+
 
 def test_login_usuario_deshabilitado(get_headers):
-    url = f'{BASE_URI}/App/user'
-    headers = get_headers("hola", "hola")
-    response = requests.get(url, headers=headers)
-    assert response.status_code == 401
-
-def test_login_usuario_incorrecta(get_headers):
-    url = f'{BASE_URI}/App/user'
-    headers = get_headers("incorrecto", "junior1")
-    response = requests.get(url, headers=headers)
-    assert response.status_code == 401
-def test_login_contraseña_incorrecta(get_headers):
-    url = f'{BASE_URI}/App/user'
-    headers = get_headers("junior", "incorrecto")
-    response = requests.get(url, headers=headers)
-    assert response.status_code == 401
-
-def test_login_campos_vacios(get_headers):
-    url = f'{BASE_URI}/App/user'
-    headers = get_headers("", "")
-    response = requests.get(url, headers=headers)
-    assert response.status_code == 401
-
-def test_login_usuario_vacio(get_headers):
-    url = f'{BASE_URI}/App/user'
-    headers = get_headers("", "junior")
-    response = requests.get(url, headers=headers)
-    assert response.status_code == 401
-
-def test_login_contraseña_vacia(get_headers):
-    url = f'{BASE_URI}/App/user'
-    headers = get_headers("junior", "")
-    response = requests.get(url, headers=headers)
-    assert response.status_code == 401
+    response = Authentication().authenticate_user_disabled(get_headers, Endpoint.LOGIN.value, 'GET')
+    AssertionEquipos.assert_status_code(response, 401)

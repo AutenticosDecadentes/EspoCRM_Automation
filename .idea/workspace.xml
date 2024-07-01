@@ -5,14 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a4f3901c-302f-44db-8a9d-1a789ed7019e" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/EspoCRM_Automation.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/EspoCRM_Automation.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assertions/assertions_equipos_usuarios.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assertions/schema_assertions.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assertions/schema_assertions.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/endpoints/endpoints.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/espocrm_api/endpoint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/espocrm_api/endpoint.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/Equipos/test_get_usuarios_por_equipo.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/Equipos/test_get_usuarios_por_equipo.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

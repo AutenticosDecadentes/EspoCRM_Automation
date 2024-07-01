@@ -6,7 +6,7 @@ class Endpoint(Enum):
     BASE_EQUIPOS = "/Team"
     BASE_EQUIPO_USUARIOS = "/Team/667594ac5470f5dc3/users"
     BASE_USUARIO = "/User"
-
+    USUARIO_ERROR="/ NonExistentEndpoint"
 
     @staticmethod
     def build_url_equipos_list(base, select=None, maxSize=None, offset=None, orderBy=None, order=None):

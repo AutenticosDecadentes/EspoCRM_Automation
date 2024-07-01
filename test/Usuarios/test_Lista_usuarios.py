@@ -34,6 +34,7 @@ def test_lista_usuarios_lista_vacia(get_headers):
 
     AssertionUsuarios().assert_status_code(response, 200)
     AssertionUsuarios().assert_empty_list(response.json())
+    AssertionSchemas().assert_usuario_lista_schema_file(response.json())
 
 def test_lista_usuarios_campos_especificados(get_headers):
     response=Authentication().authenticate_valid_user(get_headers,Endpoint.LISTAR_USUARIOS(),'GET')
@@ -48,3 +49,7 @@ def test_lista_usuarios_total(get_headers):
     AssertionUsuarios().assert_status_code(response, 200)
     AssertionUsuarios().assert_total(response.json())
     AssertionSchemas().assert_usuario_lista_schema_file(response.json())
+def test_lista_usuarios_direccion_no_encontrada(get_headers):
+    response = Authentication().authenticate_valid_user(get_headers, Endpoint.USUARIO_ERROR, 'GET')
+    AssertionUsuarios().assert_status_code(response, 404)
+

@@ -31,7 +31,7 @@ El proyecto tiene la siguiente estructura:
 - `src/espocrm_api`: Contiene las peticiones de requests y los endpoint que se utilizaran.
 - `src/resources`: Contiene los esquemas para validar los esquemas que devuelve y la autentificacion para utilizar en
   los test cases.
-- `src/utils`: Contiene utilidades varias para el proyecto.
+- `src/utils`: Contiene varias utilidades para el proyecto.
 - `tests/equipos`: Test cases para el módulo de equipos.
 - `tests/usuarios`: Test cases para el módulo de usuarios.
 - `config.py`: Archivo de configuración.

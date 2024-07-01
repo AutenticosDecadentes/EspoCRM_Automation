@@ -43,3 +43,6 @@ class Authentication:
 
     def authenticate_user_disabled(self, get_headers, endpoint, method):
         return self._authenticate_user(get_headers, endpoint, "disabled_user", method, payload=None)
+
+    def authenticate_user_empty(self, get_headers, endpoint, method):
+        return self._authenticate_user(get_headers, endpoint, "empty_user", method, payload=None)

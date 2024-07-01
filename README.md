@@ -58,7 +58,7 @@ El proyecto tiene la siguiente estructura:
 
     ```bash
     python -m venv venv
-    source venv/bin/activate  # En Windows usa `.\venv\Scripts\activate`
+    `.\venv\Scripts\activate`  # En MacOS,Linux usa `source venv/bin/activate`
     pip install pytest requests jsonschema pytest-html
     ```
 
@@ -76,7 +76,7 @@ Para ejecutar los tests, sigue estos pasos:
 2. Crea un entorno virtual y activa el entorno:
     ```bash
     python -m venv venv
-    source venv/bin/activate  # En Windows usa `.\venv\Scripts\activate`
+    `.\venv\Scripts\activate`  # En MacOS,Linux usa `source venv/bin/activate`
     pip install pytest requests jsonschema pytest-html
     ```
 

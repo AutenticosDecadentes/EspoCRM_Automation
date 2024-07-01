@@ -1,41 +1,65 @@
-import requests
-from jsonschema import validate
-from config import BASE_URI
 from conftest import get_headers
-from src.resources.schemas.equipo_usuario_schema import meeting_schema
-from src.endpoints.endpoints import build_url
+from src.assertions.equipos_assertions import AssertionEquipos
+from src.assertions.schema_assertions import AssertionSchemas
+from src.espocrm_api.endpoint import Endpoint
+from src.resources.authentications.authentication import Authentication
 
 
 def test_datos_por_defecto(get_headers):
-    url = build_url(BASE_URI)
-    headers = get_headers("admin", "admin")
-    response = requests.get(url, headers=headers)
-    assert response.status_code == 200
-    validate(instance=response.json(), schema=meeting_schema)
-
+    response = Authentication().authenticate_valid_user(get_headers, Endpoint.EQUIPO_USUARIOS(), 'GET')
+    AssertionEquipos().assert_status_code(response, 200)
+    AssertionSchemas().assert_equipo_usuarios_schema_file(response.json())
 
 def test_max_size0(get_headers):
-    url = build_url(BASE_URI, max_size=0)
-    headers = get_headers("admin", "admin")
-    response = requests.get(url, headers=headers)
-    assert response.status_code == 200
-    validate(instance=response.json(), schema=meeting_schema)
+    response = Authentication().authenticate_valid_user(get_headers, Endpoint.EQUIPO_USUARIOS(maxSize=0), 'GET')
+    AssertionEquipos().assert_status_code(response, 200)
+    AssertionSchemas().assert_equipo_usuarios_schema_file(response.json())
+
 
 
 def test_max_size_alto_mas_de_200(get_headers):
-    url = build_url(BASE_URI, max_size=201)
-    headers = get_headers("admin", "admin")
-    response = requests.get(url, headers=headers)
-    assert response.status_code == 403
-    if response.headers.get('Content-Type') == 'application/json' and response.text:
-        validate(instance=response.json(), schema=meeting_schema)
-    else:
-        assert response.text == ''
+    response = Authentication().authenticate_valid_user(get_headers, Endpoint.EQUIPO_USUARIOS(maxSize=201), 'GET')
+    AssertionEquipos().assert_status_code(response, 403)
+    AssertionEquipos().assert_response_vacio(response.text)
 
 
 def test_max_size_alto_menos_de_200(get_headers):
-    url = build_url(BASE_URI, max_size=195)
-    headers = get_headers("admin", "admin")
-    response = requests.get(url, headers=headers)
-    assert response.status_code == 200
-    validate(instance=response.json(), schema=meeting_schema)
+    response = Authentication().authenticate_valid_user(get_headers, Endpoint.EQUIPO_USUARIOS(maxSize=195), 'GET')
+    AssertionEquipos().assert_status_code(response, 200)
+    AssertionSchemas().assert_equipo_usuarios_schema_file(response.json())
+
+def test_max_size_negativo(get_headers):
+    response = Authentication().authenticate_valid_user(get_headers, Endpoint.EQUIPO_USUARIOS(maxSize=-15), 'GET')
+    AssertionEquipos().assert_status_code(response, 500)
+    AssertionEquipos().assert_response_vacio(response.text)
+
+def test_max_size_negativo(get_headers):
+    response = Authentication().authenticate_valid_user(get_headers, Endpoint.EQUIPO_USUARIOS(maxSize="hola"), 'GET')
+    AssertionEquipos().assert_status_code(response, 200)
+    AssertionSchemas().assert_equipo_usuarios_schema_file(response.json())
+
+def test_lista_equipos_usuarios_autenficacion_invalida(get_headers):
+    response = Authentication().authenticate_invalid_user(get_headers, Endpoint.EQUIPO_USUARIOS(), 'GET')
+    AssertionEquipos().assert_status_code(response, 401)
+    AssertionEquipos().assert_response_vacio(response.text)
+
+def test_lista_equipos_usuarios_orden_asc(get_headers):
+    response = Authentication().authenticate_valid_user(get_headers, Endpoint.EQUIPO_USUARIOS(order='asc'), 'GET')
+    AssertionEquipos().assert_status_code(response, 200)
+    AssertionSchemas().assert_equipo_usuarios_schema_file(response.json())
+
+
+def test_lista_equipos_usuarios_orden_desc(get_headers):
+    response = Authentication().authenticate_valid_user(get_headers, Endpoint.EQUIPO_USUARIOS(order='desc'), 'GET')
+    AssertionEquipos().assert_status_code(response, 200)
+    AssertionSchemas().assert_equipo_usuarios_schema_file(response.json())
+
+def test_lista_equipos_usuarios_ordenBy_vacio(get_headers):
+    response = Authentication().authenticate_valid_user(get_headers, Endpoint.EQUIPO_USUARIOS(orderBy=''), 'GET')
+    AssertionEquipos().assert_status_code(response, 200)
+    AssertionSchemas().assert_equipo_usuarios_schema_file(response.json())
+
+def test_lista_equipos_usuarios_ordenBy_null(get_headers):
+    response = Authentication().authenticate_valid_user(get_headers, Endpoint.EQUIPO_USUARIOS(orderBy="null"), 'GET')
+    AssertionEquipos().assert_status_code(response, 400)
+    AssertionEquipos().assert_response_vacio(response.text)

@@ -14,6 +14,10 @@ class AssertionSchemas:
             pytest.fail(f"JSON schema validation failed: {err}")
 
     @staticmethod
+    def assert_usuarios_buscar_schema_file(response):
+        return AssertionSchemas().validate_json_schema(response, "usuarios_schema.json")
+    
+    @staticmethod
     def assert_equipo_lista_schema_file(response):
         return AssertionSchemas().validate_json_schema(response, "equipo_lista_schema.json")
 

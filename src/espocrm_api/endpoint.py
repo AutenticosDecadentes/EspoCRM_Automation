@@ -9,6 +9,7 @@ class Endpoint(Enum):
     BASE_USUARIO = "/User"
     USUARIO_ERROR="/ NonExistentEndpoint"
     VER_EQUIPOS = "/Team/667db6747f894544e"
+    BASE_BUSCAR_USUARIOS = "/User"
 
     @staticmethod
     def build_url_equipos_list(base, select=None, maxSize=None, offset=None, orderBy=None, order=None):
@@ -104,3 +105,33 @@ class Endpoint(Enum):
         userType = "internal"
         select = "isActive%2CemailAddressIsOptedOut%2CemailAddressIsInvalid%2CemailAddress%2CemailAddressData%2Ctitle%2CuserName%2CsalutationName%2CfirstName%2ClastName%2CmiddleName%2Cname"
         return cls.build_url_usuarios_list(cls.BASE_USUARIO.value, userType, select, maxSize, offset, orderBy, order, where)
+
+
+    @staticmethod
+    def build_url_ordenar_usuarios(base, userType=None, select=None, maxSize=None, offset=None, orderBy=None, order=None):
+        params = []
+        if userType is not None:
+            params.append(f"userType={userType}")
+        if select is not None:
+            params.append(f"select={select}")
+        if maxSize is not None:
+            params.append(f"maxSize={maxSize}")
+        if offset is not None:
+            params.append(f"offset={offset}")
+        if orderBy is not None:
+            params.append(f"orderBy={orderBy}")
+        if order is not None:
+            params.append(f"order={order}")
+
+        return f"{base}?{'&'.join(params)}"
+
+    @classmethod
+    def ORDENAR_USUARIOS_ASC(cls, userType="internal", maxSize=20, offset=0, orderBy="name", order="asc"):
+        select = "isActive%2CemailAddressIsOptedOut%2CemailAddressIsInvalid%2CemailAddress%2CemailAddressData%2Ctitle%2CuserName%2CsalutationName%2CfirstName%2ClastName%2CmiddleName%2Cname"
+        return cls.build_url_ordenar_usuarios(cls.BASE_BUSCAR_USUARIOS.value, userType, select, maxSize, offset, orderBy, order)
+
+    @classmethod
+    def ORDENAR_USUARIOS_DESC(cls, userType="internal", maxSize=20, offset=0, orderBy="name", order="desc"):
+        select = "isActive%2CemailAddressIsOptedOut%2CemailAddressIsInvalid%2CemailAddress%2CemailAddressData%2Ctitle%2CuserName%2CsalutationName%2CfirstName%2ClastName%2CmiddleName%2Cname"
+        return cls.build_url_ordenar_usuarios(cls.BASE_BUSCAR_USUARIOS.value, userType, select, maxSize, offset, orderBy, order)
+

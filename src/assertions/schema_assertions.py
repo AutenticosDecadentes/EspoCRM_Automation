@@ -12,3 +12,5 @@ class AssertionSchemas:
             return True
         except jsonschema.exceptions.ValidationError as err:
             pytest.fail(f"JSON schema validation failed: {err}")
+
+

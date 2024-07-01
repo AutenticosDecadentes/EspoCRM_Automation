@@ -101,25 +101,29 @@ def test_lista_equipos_usuarios_ordenBy_null(get_headers):
     except ValueError:  # Manejar error de decodificación JSON
         AssertionSchemas().assert_response_vacio(response.text)
 
-
+@pytest.mark.regression
+@pytest.mark.functional
 def test_max_offset0(get_headers):
     response = Authentication().authenticate_valid_user(get_headers, Endpoint.EQUIPO_USUARIOS(offset=0), 'GET')
     AssertionSchemas().assert_status_code(response, 200)
     AssertionSchemas().assert_equipo_usuarios_schema_file(response.json())
 
-
+@pytest.mark.regression
+@pytest.mark.functional
 def test_offset_alto_menos_de_200(get_headers):
     response = Authentication().authenticate_valid_user(get_headers, Endpoint.EQUIPO_USUARIOS(offset=195), 'GET')
     AssertionSchemas().assert_status_code(response, 200)
     AssertionSchemas().assert_equipo_usuarios_schema_file(response.json())
 
-
+@pytest.mark.regression
+@pytest.mark.functional
 def test_offset_negativo(get_headers):
     response = Authentication().authenticate_valid_user(get_headers, Endpoint.EQUIPO_USUARIOS(offset=-15), 'GET')
     AssertionSchemas().assert_status_code(response, 500)
     AssertionSchemas().assert_response_vacio(response.text)
 
-
+@pytest.mark.regression
+@pytest.mark.functional
 def test_offset_string(get_headers):
     response = Authentication().authenticate_valid_user(get_headers, Endpoint.EQUIPO_USUARIOS(offset="hola"), 'GET')
     AssertionSchemas().assert_status_code(response, 200)

@@ -5,9 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a4f3901c-302f-44db-8a9d-1a789ed7019e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/assertions/usuarios_assertions.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/Usuarios/test_Lista_usuarios.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/espocrm_api/endpoint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/espocrm_api/endpoint.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assertions/equipos_assertions.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assertions/equipos_assertions.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assertions/schema_assertions.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assertions/schema_assertions.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assertions/usuarios_assertions.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assertions/usuarios_assertions.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/espocrm_api/api_request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/espocrm_api/api_request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/load_resources.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/load_resources.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Equipos/test_get_usuarios_por_equipo.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/Equipos/test_get_usuarios_por_equipo.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Equipos/test_lista_equipos.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/Equipos/test_lista_equipos.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Equipos/test_ver_equipo.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/Equipos/test_ver_equipo.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Usuarios/test_Lista_usuarios.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/Usuarios/test_Lista_usuarios.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Usuarios/test_cases.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/Usuarios/test_cases.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/test_login.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/test_login.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,7 +51,7 @@
     "Python.UseM_Automation.executor": "Run",
     "Python.main.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "usuarios/nicole/lista__usuarios",
+    "git-widget-placeholder": "RefactorCode",
     "last_opened_file_path": "C:/Users/Nicole Rita/Documents/demo/EspoCRM_Automation",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",

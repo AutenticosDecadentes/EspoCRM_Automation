@@ -5,6 +5,7 @@ class Endpoint(Enum):
     LOGIN = "/App/user"
     BASE_EQUIPOS = "/Team"
     BASE_EQUIPO_USUARIOS = "/Team/667594ac5470f5dc3/users"
+    VER_EQUIPOS = "/Team/667db6747f894544e"
 
     @staticmethod
     def build_url_equipos_list(base, select=None, maxSize=None, offset=None, orderBy=None, order=None):

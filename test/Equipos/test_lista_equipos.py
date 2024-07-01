@@ -141,7 +141,8 @@ def test_lista_equipos_offset_string(get_headers):
     response = Authentication().authenticate_valid_user(get_headers, Endpoint.LISTA_EQUIPOS(offset="string"), 'GET')
     AssertionSchemas().assert_status_code(response, 200)
 
-
+@pytest.mark.regression
+@pytest.mark.functional
 def test_lista_equipos_ordeby_desconocido(get_headers):
     response = Authentication().authenticate_valid_user(get_headers, Endpoint.LISTA_EQUIPOS(orderBy='unknown'), 'GET')
     AssertionSchemas().assert_status_code(response, 400)

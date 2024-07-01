@@ -1,6 +1,6 @@
-# EspoCRM Demo Automation
+# EspoCRM Automation
 
-Automatización de pruebas para la versión demo de EspoCRM, enfocada en los módulos de equipos y usuarios utilizando
+Automatización de pruebas para EspoCRM, enfocada en los módulos de equipos y usuarios utilizando
 pytest con la libreria de requests en pyhton.
 
 ## Descripción

@@ -17,5 +17,9 @@ class AssertionUsuarios:
         assert response_json['total'] == expected_total
 
     @staticmethod
-    def assert_response_empty(response_json):
-        assert response_json == {} or response_json == [] or response_json == ""
+    def assert_response_vacio(response_text):
+        assert response_text == ''
+
+    @staticmethod
+    def assert_list_no_empty(response_json):
+        assert response_json['list'] is not None

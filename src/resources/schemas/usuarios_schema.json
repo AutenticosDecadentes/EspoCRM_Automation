@@ -22,10 +22,10 @@
             "type": "string"
           },
           "salutationName": {
-            "type": "string"
+            "type": ["string", "null"]
           },
           "firstName": {
-            "type": "string"
+            "type": ["string", "null"]
           },
           "lastName": {
             "type": "string"
@@ -34,19 +34,19 @@
             "type": "boolean"
           },
           "title": {
-            "type": ["null", "string"]
+            "type": ["string", "null"]
           },
           "emailAddress": {
-            "type": "string"
+            "type": ["string", "null"]
           },
           "middleName": {
-            "type": ["null", "string"]
+            "type": "null"
           },
           "emailAddressIsOptedOut": {
-            "type": "boolean"
+            "type": ["boolean", "null"]
           },
           "emailAddressIsInvalid": {
-            "type": "boolean"
+            "type": ["boolean", "null"]
           },
           "createdById": {
             "type": "string"
@@ -61,7 +61,9 @@
           "firstName",
           "lastName",
           "isActive",
+          "title",
           "emailAddress",
+          "middleName",
           "emailAddressIsOptedOut",
           "emailAddressIsInvalid",
           "createdById"

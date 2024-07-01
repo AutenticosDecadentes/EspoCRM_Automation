@@ -64,3 +64,18 @@ class AssertionSchemas:
     @staticmethod
     def assert_list_no_empty(response_json):
         assert response_json['list'] is not None
+
+    @staticmethod
+    def assert_list_length_within_range(response_json, min_len=1, max_len=20):
+        list_length = len(response_json['list'])
+        assert min_len <= list_length <= max_len, "La longitud de la lista debe estar entre {min_len} y {max_len}."
+
+    @staticmethod
+    def assert_usuarios_orden_asc_schema_file(response):
+        return AssertionSchemas().validate_json_schema(response, "usuarios_asc.json")
+
+    @staticmethod
+    def assert_usuarios_orden_desc_schema_file(response):
+        return AssertionSchemas().validate_json_schema(response, "usuarios_desc.json")
+
+ 

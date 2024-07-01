@@ -5,6 +5,8 @@ class Endpoint(Enum):
     LOGIN = "/App/user"
     BASE_EQUIPOS = "/Team"
     BASE_EQUIPO_USUARIOS = "/Team/667594ac5470f5dc3/users"
+    BASE_USUARIO = "/User"
+
 
     @staticmethod
     def build_url_equipos_list(base, select=None, maxSize=None, offset=None, orderBy=None, order=None):
@@ -51,3 +53,29 @@ class Endpoint(Enum):
                                              orderBy, order)
 
 
+    @staticmethod
+    def build_url_usuarios_list(base, userType=None, select=None, maxSize=None, offset=None, orderBy=None, order=None,
+                                where=None):
+        params = []
+        if userType is not None:
+            params.append(f"userType={userType}")
+        if select is not None:
+            params.append(f"select={select}")
+        if maxSize is not None:
+            params.append(f"maxSize={maxSize}")
+        if offset is not None:
+            params.append(f"offset={offset}")
+        if orderBy is not None:
+            params.append(f"orderBy={orderBy}")
+        if order is not None:
+            params.append(f"order={order}")
+        if where is not None:
+            params.append(f"where[0][type]=textFilter&where[0][value]={where}")
+
+        return f"{base}?{'&'.join(params)}"
+
+    @classmethod
+    def LISTAR_USUARIOS(cls, maxSize=20, offset=0, orderBy="userName", order="asc", where=None):
+        userType = "internal"
+        select = "isActive%2CemailAddressIsOptedOut%2CemailAddressIsInvalid%2CemailAddress%2CemailAddressData%2Ctitle%2CuserName%2CsalutationName%2CfirstName%2ClastName%2CmiddleName%2Cname"
+        return cls.build_url_usuarios_list(cls.BASE_USUARIO.value, userType, select, maxSize, offset, orderBy, order, where)

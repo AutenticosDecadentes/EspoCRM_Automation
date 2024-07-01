@@ -20,3 +20,7 @@ class AssertionSchemas:
     @staticmethod
     def assert_equipo_sin_select_schema_file(response):
         return AssertionSchemas().validate_json_schema(response, "equipo_sin_select_schema.json")
+
+    @staticmethod
+    def assert_equipo_usuarios_schema_file(response):
+        return AssertionSchemas().validate_json_schema(response, "equipo_usuario_schema.json")

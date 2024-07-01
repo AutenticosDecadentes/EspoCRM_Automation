@@ -3,7 +3,6 @@ from src.espocrm_api.endpoint import Endpoint
 from src.resources.authentications.authentication import Authentication
 
 
-
 def test_login_valido(get_headers):
     response = Authentication().authenticate_valid_user(get_headers, Endpoint.LOGIN.value, 'GET')
     AssertionEquipos.assert_status_code(response, 200)

@@ -5,14 +5,6 @@ from src.espocrm_api.endpoint import Endpoint
 from src.resources.authentications.authentication import Authentication
 from src.espocrm_api.api_request import EspocrmRequest
 import requests
-# def test_ver_equipo_correcto(get_headers): #Test
-#     # url = f'https://espo.spartan-soft.com/api/v1{Endpoint.VER_EQUIPOS.value}'
-#     # headers = get_headers("admin", "admin")
-#     # response = requests.get(url, headers=headers)
-#     response = Authentication().authenticate_valid_user(get_headers, Endpoint.VER_EQUIPOS.value, 'GET')
-#     AssertionEquipos().assert_status_code(response,200)
-#     AssertionSchemas().assert_ver_equipo_schema_file(response.json())
-#     # assert response.status_code == 200
 
 def test_ver_equipo_headers_adicionales(get_headers): #52
     url = f'https://espo.spartan-soft.com/api/v1{Endpoint.VER_EQUIPOS.value}'

@@ -10,3 +10,5 @@ def resources_schemas_path(path):
 def load_schema_resource(filename):
     with resources_schemas_path(filename).open() as f:
         return json.load(f)
+
+

@@ -8,21 +8,21 @@ class EspocrmRequest:
         return response
 
     @staticmethod
-    def post(url, headers, payloads):
+    def post(url, headers, payloads=None):
         headers = headers.copy()
         headers.update({'Content-Type': 'application/json'})
         response = requests.post(url, headers=headers, data=payloads)
         return response
 
     @staticmethod
-    def put(url, headers, payloads):
+    def put(url, headers, payloads=None):
         headers = headers.copy()
         headers.update({'Content-Type': 'application/json'})
         response = requests.put(url, headers=headers, data=payloads)
         return response
 
     @staticmethod
-    def delete(url, headers, payloads):
+    def delete(url, headers, payloads=None):
         headers = headers.copy()
         headers.update({'Content-Type': 'application/json'})
         response = requests.delete(url, headers=headers, data=payloads)

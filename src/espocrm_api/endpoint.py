@@ -8,7 +8,7 @@ class Endpoint(Enum):
     BASE_EQUIPO_USUARIOS = "/Team/{team_id}/users"
     BASE_USUARIO = "/User"
     USUARIO_ERROR = "/ NonExistentEndpoint"
-    VER_EQUIPOS = "/Team/667db6747f894544e"
+    VER_EQUIPOS = "/Team/{team_id}"
     BASE_BUSCAR_USUARIOS = "/User"
 
     @staticmethod

@@ -1,15 +1,20 @@
 import pytest
-import requests
 import base64
-from config import BASE_URI, X_Api_Key
+from config import X_Api_Key
+
+
 @pytest.fixture
 def get_headers():
-    def _get_headers(username, password):
+    def _get_headers(username, password, additional_params=None):
         espo_authorization = encoded(username, password)
-        return {
+        headers = {
             'Espo-Authorization': espo_authorization,
             'X-Api-Key': X_Api_Key
         }
+        if additional_params:
+            headers.update(additional_params)
+        return headers
+
     return _get_headers
 
 

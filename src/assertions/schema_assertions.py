@@ -1,7 +1,7 @@
 from src.utils.load_resources import load_schema_resource
 import jsonschema
 import pytest
-
+import json
 
 class AssertionSchemas:
     @staticmethod
@@ -20,29 +20,31 @@ class AssertionSchemas:
             pytest.fail(f"JSON schema validation failed: {err}")
 
     @staticmethod
-    def assert_usuarios_buscar_schema_file(response):
-        return AssertionSchemas().validate_json_schema(response, "usuarios_schema.json")
+    def assert_users_search_schema_file(response):
+        return AssertionSchemas().validate_json_schema(response, "users_search_list_schema.json")
     
     @staticmethod
-    def assert_equipo_lista_schema_file(response):
-        return AssertionSchemas().validate_json_schema(response, "equipo_lista_schema.json")
+    def assert_teams_list_schema_file(response):
+        return AssertionSchemas().validate_json_schema(response, "teams_list_schema.json")
 
     @staticmethod
-    def assert_equipo_sin_select_schema_file(response):
-        return AssertionSchemas().validate_json_schema(response, "equipo_sin_select_schema.json")
+    def assert_teams_list_without_select_schema_file(response):
+        return AssertionSchemas().validate_json_schema(response, "teams_list_without_select_schema.json")
 
     @staticmethod
-    def assert_equipo_usuarios_schema_file(response):
-        return AssertionSchemas().validate_json_schema(response, "equipo_usuario_schema.json")
+    def assert_teams_users_schema_file(response):
+        return AssertionSchemas().validate_json_schema(response, "teams_users_schema.json")
 
     @staticmethod
-    def assert_usuario_lista_schema_file(response):
-        return AssertionSchemas().validate_json_schema(response, "usuario_lista_schema.json")
+    def assert_users_list_schema_file(response):
+        return AssertionSchemas().validate_json_schema(response, "users_list_schema.json")
 
     @staticmethod
-    def assert_ver_equipo_schema_file(response):
-        return AssertionSchemas().validate_json_schema(response, "equipo_ver_schema.json")
+    def assert_team_view_schema_file(response):
+        return AssertionSchemas().validate_json_schema(response, "team_view_schema.json")
 
+
+##ANALIZAR
     @staticmethod
     def assert_status_code(response, expected_status_code):
         assert response.status_code == expected_status_code
@@ -72,10 +74,10 @@ class AssertionSchemas:
 
     @staticmethod
     def assert_usuarios_orden_asc_schema_file(response):
-        return AssertionSchemas().validate_json_schema(response, "usuarios_asc.json")
+        return AssertionSchemas().validate_json_schema(response, "users_list_asc_schema.json")
 
     @staticmethod
     def assert_usuarios_orden_desc_schema_file(response):
-        return AssertionSchemas().validate_json_schema(response, "usuarios_desc.json")
+        return AssertionSchemas().validate_json_schema(response, "users_list_desc_schema.json")
 
  

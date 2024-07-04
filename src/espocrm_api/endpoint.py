@@ -5,9 +5,9 @@ class Endpoint(Enum):
     LOGIN = "/App/user"
     BASE_EQUIPOS = "/Team"
     BASE_BUSCAR_EQUIPOS = "/User"
-    BASE_EQUIPO_USUARIOS = "/Team/667594ac5470f5dc3/users"
+    BASE_EQUIPO_USUARIOS = "/Team/{team_id}/users"
     BASE_USUARIO = "/User"
-    USUARIO_ERROR="/ NonExistentEndpoint"
+    USUARIO_ERROR = "/ NonExistentEndpoint"
     VER_EQUIPOS = "/Team/667db6747f894544e"
     BASE_BUSCAR_USUARIOS = "/User"
 
@@ -54,7 +54,7 @@ class Endpoint(Enum):
                         offset=0, orderBy="userName", order="asc"):
         return cls.build_url_equipo_usuarios(cls.BASE_EQUIPO_USUARIOS.value, primaryFilter, select, maxSize, offset,
                                              orderBy, order)
-      
+
     @staticmethod
     def build_url_buscar_usuarios(base, select=None, maxSize=None, offset=None, orderBy=None, order=None, where=None):
 
@@ -77,7 +77,8 @@ class Endpoint(Enum):
     @classmethod
     def BUSCAR_USUARIOS(cls, maxSize=20, offset=0, orderBy="name", order="asc", where=None):
         select = "isActive%2CemailAddressIsOptedOut%2CemailAddressIsInvalid%2CemailAddress%2CemailAddressData%2Ctitle%2CuserName%2CsalutationName%2CfirstName%2ClastName%2CmiddleName%2Cname"
-        return cls.build_url_buscar_usuarios(cls.BASE_BUSCAR_EQUIPOS.value, select, maxSize, offset, orderBy, order, where)
+        return cls.build_url_buscar_usuarios(cls.BASE_BUSCAR_EQUIPOS.value, select, maxSize, offset, orderBy, order,
+                                             where)
 
     @staticmethod
     def build_url_usuarios_list(base, userType=None, select=None, maxSize=None, offset=None, orderBy=None, order=None,
@@ -104,11 +105,12 @@ class Endpoint(Enum):
     def LISTAR_USUARIOS(cls, maxSize=20, offset=0, orderBy="userName", order="asc", where=None):
         userType = "internal"
         select = "isActive%2CemailAddressIsOptedOut%2CemailAddressIsInvalid%2CemailAddress%2CemailAddressData%2Ctitle%2CuserName%2CsalutationName%2CfirstName%2ClastName%2CmiddleName%2Cname"
-        return cls.build_url_usuarios_list(cls.BASE_USUARIO.value, userType, select, maxSize, offset, orderBy, order, where)
-
+        return cls.build_url_usuarios_list(cls.BASE_USUARIO.value, userType, select, maxSize, offset, orderBy, order,
+                                           where)
 
     @staticmethod
-    def build_url_ordenar_usuarios(base, userType=None, select=None, maxSize=None, offset=None, orderBy=None, order=None):
+    def build_url_ordenar_usuarios(base, userType=None, select=None, maxSize=None, offset=None, orderBy=None,
+                                   order=None):
         params = []
         if userType is not None:
             params.append(f"userType={userType}")
@@ -128,10 +130,11 @@ class Endpoint(Enum):
     @classmethod
     def ORDENAR_USUARIOS_ASC(cls, userType="internal", maxSize=20, offset=0, orderBy="name", order="asc"):
         select = "isActive%2CemailAddressIsOptedOut%2CemailAddressIsInvalid%2CemailAddress%2CemailAddressData%2Ctitle%2CuserName%2CsalutationName%2CfirstName%2ClastName%2CmiddleName%2Cname"
-        return cls.build_url_ordenar_usuarios(cls.BASE_BUSCAR_USUARIOS.value, userType, select, maxSize, offset, orderBy, order)
+        return cls.build_url_ordenar_usuarios(cls.BASE_BUSCAR_USUARIOS.value, userType, select, maxSize, offset,
+                                              orderBy, order)
 
     @classmethod
     def ORDENAR_USUARIOS_DESC(cls, userType="internal", maxSize=20, offset=0, orderBy="name", order="desc"):
         select = "isActive%2CemailAddressIsOptedOut%2CemailAddressIsInvalid%2CemailAddress%2CemailAddressData%2Ctitle%2CuserName%2CsalutationName%2CfirstName%2ClastName%2CmiddleName%2Cname"
-        return cls.build_url_ordenar_usuarios(cls.BASE_BUSCAR_USUARIOS.value, userType, select, maxSize, offset, orderBy, order)
-
+        return cls.build_url_ordenar_usuarios(cls.BASE_BUSCAR_USUARIOS.value, userType, select, maxSize, offset,
+                                              orderBy, order)

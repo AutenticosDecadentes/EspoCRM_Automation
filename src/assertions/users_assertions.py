@@ -8,14 +8,14 @@ class AssertionUsers:
         assert response_text == ''
 
     @staticmethod
-    def assert_check_orden_desc(response_json):
-        lista = [usuario['userName'] for usuario in response_json['list']]
-        assert lista == sorted(lista, reverse=True), "La lista de usuarios no está en orden descendente"
+    def assert_check_order_asc(response_json):
+        lists = [user['userName'] for user in response_json['list']]
+        assert lists == sorted(lists), "The user list is not in ascending order"
 
     @staticmethod
-    def assert_check_orden_asc(response_json):
-        lista = [usuario['userName'] for usuario in response_json['list']]
-        assert lista == sorted(lista), "La lista de usuarios no está en orden ascendente"
+    def assert_check_order_desc(response_json):
+        lists = [user['userName'] for user in response_json['list']]
+        assert lists == sorted(lists, reverse=True), "The user list is not in descending order"
 
     @staticmethod
     def assert_empty_list(response_json):

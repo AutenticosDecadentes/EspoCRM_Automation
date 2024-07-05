@@ -6,9 +6,9 @@ class AssertionTeams:
     def assert_check_orden(response_json, order):
         list = [team['name'] for team in response_json['list']]
         if order == "asc":
-            assert list == sorted(list), "La lista de equipos no esta en orden asc"
+            assert list == sorted(list), "The equipment list is not in asc order"
         elif order == "desc":
-            assert list == sorted(list, reverse=True), "La lista de equipos no esta en orden desc"
+            assert list == sorted(list, reverse=True), "The equipment list is not in order"
         else:
             pytest.fail(f"Orden '{order}' invalido")
 

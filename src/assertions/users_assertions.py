@@ -1,14 +1,16 @@
 import pytest
 
 
-class AssertionUsuarios:
+class AssertionUsers:
 
+    @staticmethod
+    def assert_response_empty(response_text):
+        assert response_text == ''
 
     @staticmethod
     def assert_check_orden_desc(response_json):
         lista = [usuario['userName'] for usuario in response_json['list']]
         assert lista == sorted(lista, reverse=True), "La lista de usuarios no está en orden descendente"
-
 
     @staticmethod
     def assert_check_orden_asc(response_json):
@@ -23,9 +25,9 @@ class AssertionUsuarios:
     @staticmethod
     def assert_campos_especificados(response_json):
         expected_campos = [
-            'createdById', 'emailAddress','emailAddressIsInvalid','emailAddressIsOptedOut',
-            'firstName', 'id','isActive','lastName','middleName','name','salutationName',
-            'title', 'type','userName'
+            'createdById', 'emailAddress', 'emailAddressIsInvalid', 'emailAddressIsOptedOut',
+            'firstName', 'id', 'isActive', 'lastName', 'middleName', 'name', 'salutationName',
+            'title', 'type', 'userName'
 
         ]
 

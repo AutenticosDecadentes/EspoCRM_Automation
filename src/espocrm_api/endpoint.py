@@ -4,6 +4,7 @@ from enum import Enum
 class Endpoint(Enum):
     LOGIN = "/App/user"
     BASE_EQUIPOS = "/Team"
+    BASE_USER = "/User"
     BASE_BUSCAR_EQUIPOS = "/User"
     BASE_EQUIPO_USUARIOS = "/Team/{team_id}/users"
     BASE_USUARIO = "/User"

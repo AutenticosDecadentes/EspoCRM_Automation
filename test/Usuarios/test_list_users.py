@@ -32,7 +32,6 @@ def test_list_users_descending_order(get_headers):
     response = EspocrmRequest().get(EndpointUsers.list(order='desc'), headers)
     AssertionStatusCode().assert_status_code_200(response)
     AssertionSchemas().assert_users_list_schema_file(response.json())
-    # AssertionUsers().assert_check_order_desc(response.json())
 
 
 #
@@ -43,7 +42,6 @@ def test_list_users_ascending_order(get_headers):
     response = EspocrmRequest().get(EndpointUsers.list(order='asc'), headers)
     AssertionStatusCode().assert_status_code_200(response)
     AssertionSchemas().assert_users_list_schema_file(response.json())
-    # AssertionUsers().assert_check_order_asc(response.json())
 
 
 @pytest.mark.regression

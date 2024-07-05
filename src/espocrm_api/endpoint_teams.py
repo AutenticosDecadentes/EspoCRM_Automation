@@ -20,7 +20,7 @@ class EndpointTeams:
 
     @classmethod
     def list(cls, select="name", maxSize=20, offset=0, orderBy="name", order="asc"):
-        return cls.build_url_list(Endpoint.BASE_EQUIPOS.value, select, maxSize, offset, orderBy, order)
+        return cls.build_url_list(Endpoint.BASE_TEAM.value, select, maxSize, offset, orderBy, order)
 
     @staticmethod
     def build_url_team_users(base, team_id, primaryFilter=None, select=None, maxSize=None, offset=None, orderBy=None,
@@ -44,7 +44,7 @@ class EndpointTeams:
     def team_users(cls, team_id="667594ce0383bbd32", primaryFilter="",
                    select="teamRole,userName,salutationName,firstName,lastName,middleName,name", maxSize=5, offset=0,
                    orderBy="userName", order="asc"):
-        return cls.build_url_team_users(Endpoint.BASE_EQUIPO_USUARIOS.value, team_id, primaryFilter, select, maxSize,
+        return cls.build_url_team_users(Endpoint.BASE_TEAM_USERS.value, team_id, primaryFilter, select, maxSize,
                                         offset,
                                         orderBy, order)
 
@@ -54,4 +54,4 @@ class EndpointTeams:
 
     @classmethod
     def view(cls, team_id="667db6747f894544e"):
-        return cls.build_url_team_view(Endpoint.VER_EQUIPOS.value, team_id)
+        return cls.build_url_team_view(Endpoint.BASE_TEAM_VIEW.value, team_id)

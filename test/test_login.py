@@ -1,19 +1,26 @@
-from src.assertions.equipos_assertions import AssertionEquipos
-from src.assertions.schema_assertions import AssertionSchemas
+import pytest
 from src.espocrm_api.endpoint import Endpoint
-from src.resources.authentications.authentication import Authentication
+from src.assertions.status_code_assertions import AssertionStatusCode
+from src.resources.authentifications.authentification import Auth
+from src.espocrm_api.api_request import EspocrmRequest
 
 
-def test_login_valido(get_headers):
-    response = Authentication().authenticate_valid_user(get_headers, Endpoint.LOGIN.value, 'GET')
-    AssertionSchemas.assert_status_code(response, 200)
+@pytest.mark.smoke
+def test_valid_login(get_headers):
+    headers = Auth().get_valid_user_headers(get_headers)
+    response = EspocrmRequest().get(Endpoint.login(), headers)
+    AssertionStatusCode().assert_status_code_200(response)
 
 
-def test_login_invalido(get_headers):
-    response = Authentication().authenticate_invalid_user(get_headers, Endpoint.LOGIN.value, 'GET')
-    AssertionSchemas.assert_status_code(response, 401)
+@pytest.mark.smoke
+def test_invalid_login(get_headers):
+    headers = Auth().get_invalid_user_headers(get_headers)
+    response = EspocrmRequest().get(Endpoint.login(), headers)
+    AssertionStatusCode().assert_status_code_401(response)
 
 
-def test_login_usuario_deshabilitado(get_headers):
-    response = Authentication().authenticate_user_disabled(get_headers, Endpoint.LOGIN.value, 'GET')
-    AssertionSchemas.assert_status_code(response, 401)
+@pytest.mark.smoke
+def test_disabled_user_login(get_headers):
+    headers = Auth().get_disabled_user_headers(get_headers)
+    response = EspocrmRequest().get(Endpoint.login(), headers)
+    AssertionStatusCode().assert_status_code_401(response)

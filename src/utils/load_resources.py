@@ -4,8 +4,10 @@ from pathlib import Path
 
 BASE = Path(__file__).absolute().parent.parent
 
+
 def resources_schemas_path(path):
     return BASE / "resources" / "schemas" / path
+
 
 def load_schema_resource(filename):
     try:
@@ -14,8 +16,10 @@ def load_schema_resource(filename):
     except FileNotFoundError:
         raise FileNotFoundError(f"Schema file '{filename}' not found")
 
+
 def resources_credential_path(path):
     return BASE / "resources" / "credentials" / path
+
 
 def load_credential_resource(filename):
     try:

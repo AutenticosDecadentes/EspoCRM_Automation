@@ -55,12 +55,14 @@ def test_invalid_order_by_parameters(get_headers):
     response = EspocrmRequest().get(EndpointUsers.order(orderBy="campo_inexistente"), headers)
     AssertionStatusCode().assert_status_code_400(response)
 
+
 @pytest.mark.regression
 @pytest.mark.functional
 def test_invalid_order_parameters(get_headers):
     headers = Auth().get_valid_user_headers(get_headers)
     response = EspocrmRequest().get(EndpointUsers.order(order="campo_inexistente"), headers)
     AssertionStatusCode().assert_status_code_400(response)
+
 
 @pytest.mark.regression
 @pytest.mark.functional

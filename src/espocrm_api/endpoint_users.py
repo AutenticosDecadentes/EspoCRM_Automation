@@ -85,4 +85,4 @@ class EndpointUsers(Enum):
     def order(cls, userType="internal", maxSize=20, offset=0, orderBy="name", order="asc"):
         select = "isActive%2CemailAddressIsOptedOut%2CemailAddressIsInvalid%2CemailAddress%2CemailAddressData%2Ctitle%2CuserName%2CsalutationName%2CfirstName%2ClastName%2CmiddleName%2Cname"
         return cls.build_url_order_user(Endpoint.BASE_USER.value, userType, select, maxSize, offset,
-                                              orderBy, order)
+                                        orderBy, order)

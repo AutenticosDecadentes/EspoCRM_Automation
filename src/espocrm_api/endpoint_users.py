@@ -62,3 +62,27 @@ class EndpointUsers(Enum):
     @classmethod
     def user_error(cls):
         return f"{BASE_URI}{EndpointUsers.USER_ERROR.value}"
+
+    def build_url_order_user(base, userType=None, select=None, maxSize=None, offset=None, orderBy=None,
+                             order=None):
+        params = []
+        if userType is not None:
+            params.append(f"userType={userType}")
+        if select is not None:
+            params.append(f"select={select}")
+        if maxSize is not None:
+            params.append(f"maxSize={maxSize}")
+        if offset is not None:
+            params.append(f"offset={offset}")
+        if orderBy is not None:
+            params.append(f"orderBy={orderBy}")
+        if order is not None:
+            params.append(f"order={order}")
+
+        return f"{BASE_URI}{base}?{'&'.join(params)}"
+
+    @classmethod
+    def order(cls, userType="internal", maxSize=20, offset=0, orderBy="name", order="asc"):
+        select = "isActive%2CemailAddressIsOptedOut%2CemailAddressIsInvalid%2CemailAddress%2CemailAddressData%2Ctitle%2CuserName%2CsalutationName%2CfirstName%2ClastName%2CmiddleName%2Cname"
+        return cls.build_url_order_user(Endpoint.BASE_USER.value, userType, select, maxSize, offset,
+                                              orderBy, order)

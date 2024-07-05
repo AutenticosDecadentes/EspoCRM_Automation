@@ -3,6 +3,7 @@ import jsonschema
 import pytest
 import json
 
+
 class AssertionSchemas:
     @staticmethod
     def validate_json_schema(response, schema_file):
@@ -22,7 +23,7 @@ class AssertionSchemas:
     @staticmethod
     def assert_users_search_schema_file(response):
         return AssertionSchemas().validate_json_schema(response, "users_search_list_schema.json")
-    
+
     @staticmethod
     def assert_teams_list_schema_file(response):
         return AssertionSchemas().validate_json_schema(response, "teams_list_schema.json")
@@ -43,8 +44,15 @@ class AssertionSchemas:
     def assert_team_view_schema_file(response):
         return AssertionSchemas().validate_json_schema(response, "team_view_schema.json")
 
+    @staticmethod
+    def assert_users_order_asc_schema_file(response):
+        return AssertionSchemas().validate_json_schema(response, "users_list_asc_schema.json")
 
-##ANALIZAR
+    @staticmethod
+    def assert_users_order_desc_schema_file(response):
+        return AssertionSchemas().validate_json_schema(response, "users_list_desc_schema.json")
+
+    ##ANALIZAR
     @staticmethod
     def assert_status_code(response, expected_status_code):
         assert response.status_code == expected_status_code
@@ -67,11 +75,7 @@ class AssertionSchemas:
     def assert_list_no_empty(response_json):
         assert response_json['list'] is not None
 
-    @staticmethod
-    def assert_list_length_within_range(response_json, min_len=1, max_len=20):
-        list_length = len(response_json['list'])
-        assert min_len <= list_length <= max_len, "La longitud de la lista debe estar entre {min_len} y {max_len}."
-
+    assert_list_no_empty
     @staticmethod
     def assert_usuarios_orden_asc_schema_file(response):
         return AssertionSchemas().validate_json_schema(response, "users_list_asc_schema.json")
@@ -79,5 +83,3 @@ class AssertionSchemas:
     @staticmethod
     def assert_usuarios_orden_desc_schema_file(response):
         return AssertionSchemas().validate_json_schema(response, "users_list_desc_schema.json")
-
- 

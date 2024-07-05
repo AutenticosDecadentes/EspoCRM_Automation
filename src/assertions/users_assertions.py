@@ -40,3 +40,12 @@ class AssertionUsers:
         assert 'total' in response_json, "El campo 'total' no está presente en la respuesta JSON"
         assert isinstance(response_json['total'], int), "El campo 'total' no es de tipo entero"
         assert response_json['total'] >= 0, "El campo 'total' debe ser un número positivo"
+
+    @staticmethod
+    def assert_list_length_within_range(response_json, min_len=1, max_len=20):
+        list_length = len(response_json['list'])
+        assert min_len <= list_length <= max_len, "The length of the list should be between {min_len} and {max_len}."
+
+    @staticmethod
+    def assert_list_no_empty(response_json):
+        assert response_json['list'] is not None

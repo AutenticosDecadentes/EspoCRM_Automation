@@ -43,3 +43,13 @@ class AssertionTeams:
     def assert_check_order_desc(response_json):
         lists = [user['userName'] for user in response_json['list']]
         assert lists == sorted(lists, reverse=True), "The user list is not in descending order"
+
+    @staticmethod
+    def assert_response_true(response):
+        assert response.text == "true"
+
+    @staticmethod
+    def assert_users_in_team(users_id, team):
+        user_ids_in_team = [user['id'] for user in team['list']]
+        for user_id in users_id:
+            assert user_id in user_ids_in_team, f"User with ID {user_id} not found in the team."

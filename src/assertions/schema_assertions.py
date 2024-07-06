@@ -51,3 +51,7 @@ class AssertionSchemas:
     @staticmethod
     def assert_users_order_desc_schema_file(response):
         return AssertionSchemas().validate_json_schema(response, "users_list_desc_schema.json")
+
+    @staticmethod
+    def assert_team_add_user_schema_payload_file(payload):
+        return AssertionSchemas().validate_json_schema(payload, "team_add_user_schema.json")

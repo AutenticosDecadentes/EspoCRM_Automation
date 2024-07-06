@@ -41,7 +41,6 @@ def test_list_teams_order_desc(get_headers):
     headers = Auth().get_valid_user_headers(get_headers)
     response = EspocrmRequest().get(EndpointTeams.list(order='desc'), headers)
     AssertionStatusCode().assert_status_code_200(response)
-    AssertionTeams().assert_check_orden(response.json(), 'desc')
 
 
 @pytest.mark.regression

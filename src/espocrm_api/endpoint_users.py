@@ -6,6 +6,18 @@ from enum import Enum
 class EndpointUsers(Enum):
     USER_ERROR = "/NonExistentEndpoint"
 
+    @classmethod
+    def user(cls):
+        return f"{BASE_URI}{Endpoint.BASE_USER.value}"
+
+    @staticmethod
+    def build_url_user_view(base, user_id):
+        return f"{BASE_URI}{base.format(user_id=user_id)}"
+
+    @classmethod
+    def view(cls, user_id="667db6747f894544e"):
+        return cls.build_url_user_view(Endpoint.BASE_USER_VIEW.value, user_id)
+
     @staticmethod
     def build_url_search_users(base, select=None, maxSize=None, offset=None, orderBy=None, order=None, where=None):
 
@@ -63,6 +75,7 @@ class EndpointUsers(Enum):
     def user_error(cls):
         return f"{BASE_URI}{EndpointUsers.USER_ERROR.value}"
 
+    @staticmethod
     def build_url_order_user(base, userType=None, select=None, maxSize=None, offset=None, orderBy=None,
                              order=None):
         params = []

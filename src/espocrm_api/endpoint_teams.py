@@ -3,6 +3,11 @@ from config import BASE_URI
 
 
 class EndpointTeams:
+
+    @classmethod
+    def team(cls):
+        return f"{BASE_URI}{Endpoint.BASE_TEAM.value}"
+
     @staticmethod
     def build_url_list(base, select=None, maxSize=None, offset=None, orderBy=None, order=None):
         params = []
@@ -55,3 +60,11 @@ class EndpointTeams:
     @classmethod
     def view(cls, team_id="667db6747f894544e"):
         return cls.build_url_team_view(Endpoint.BASE_TEAM_VIEW.value, team_id)
+
+    @staticmethod
+    def build_url_add_user_team(base, team_id):
+        return f"{BASE_URI}{base.format(team_id=team_id)}"
+
+    @classmethod
+    def add_users(cls, team_id):
+        return cls.build_url_add_user_team(Endpoint.BASE_TEAM_USERS.value, team_id)

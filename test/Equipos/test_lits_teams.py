@@ -19,7 +19,6 @@ def test_list_teams_with_data(get_headers):
 
 @pytest.mark.regression
 @pytest.mark.functional
-@pytest.mark.prueba
 def test_list_teams_order_asc(get_headers):
     headers = Auth().get_valid_user_headers(get_headers)
     response = EspocrmRequest().get(EndpointTeams.list(order='asc'), headers)

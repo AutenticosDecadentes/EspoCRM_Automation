@@ -6,7 +6,8 @@ from src.resources.call_request.team import TeamCall
 from src.resources.call_request.user import UserCall
 
 
-@pytest.fixture(scope="function")
+
+@pytest.fixture(scope="module")
 def setup_team_add_user(get_headers):
     headers = Auth().get_valid_user_headers(get_headers)
     payload_team = PayloadTeam().build_payload_add_team("Team Golden")
@@ -24,4 +25,20 @@ def setup_team_add_user(get_headers):
     UserCall().delete(headers, user1['id'])
     UserCall().delete(headers, user2['id'])
 
+@pytest.fixture(scope="module")
+def setup_create_user(get_headers):
+    headers = Auth().get_valid_user_headers(get_headers)
+    payload_user_1 = PayloadUser().build_payload_add_user(userName="charles", salutationName="Mrs.",
+                                                          firstName="Charles",
+                                                          lastName="James")
+    user = UserCall().create(headers, payload_user_1)
+    yield user
 
+@pytest.fixture(scope="function")
+def setup_add_team(get_headers):
+    headers = Auth().get_valid_user_headers(get_headers)
+    created_teams = []
+    yield headers, created_teams
+
+    for team in created_teams:
+        TeamCall().delete(headers, team['id'])

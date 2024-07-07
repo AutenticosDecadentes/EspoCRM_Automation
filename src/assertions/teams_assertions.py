@@ -49,7 +49,16 @@ class AssertionTeams:
         assert response.text == "true"
 
     @staticmethod
+    def assert_response_false(response):
+        assert response.text == "false"
+
+    @staticmethod
     def assert_users_in_team(users_id, team):
         user_ids_in_team = [user['id'] for user in team['list']]
         for user_id in users_id:
             assert user_id in user_ids_in_team, f"User with ID {user_id} not found in the team."
+
+    @staticmethod
+    def assert_user_not_in_team(user_id, team):
+        user_ids_in_team = [user['id'] for user in team['list']]
+        assert user_id not in user_ids_in_team, f"User with ID {user_id} found in the team."

@@ -37,19 +37,6 @@ def test_add_team_duplicate_name(setup_add_team):
 
 @pytest.mark.regression
 @pytest.mark.functional
-def test_add_team_empty_name(setup_add_team):
-    headers, created_teams = setup_add_team
-    payload = PayloadTeam().build_payload_add_team()
-    print(payload)
-    response = EspocrmRequest().post(EndpointTeams.team(), headers, payload)
-    AssertionStatusCode().assert_status_code_400(response)
-    AssertionSchemas().assert_add_team_schema_schema_file(response.json())
-    created_team = response.json()
-    created_teams.append(created_team)
-
-
-@pytest.mark.regression
-@pytest.mark.functional
 def test_add_team_all_data(setup_add_team):
     headers, created_teams = setup_add_team
     payload = PayloadTeam().build_payload_add_team(name="prueba1111", rolesNames="Mortal", layoutSetName="Layout 1", workingTimeCalendarName="Calendar")

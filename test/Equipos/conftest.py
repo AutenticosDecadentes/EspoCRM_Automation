@@ -25,8 +25,6 @@ def setup_team_add_user(get_headers):
     UserCall().delete(headers, user1['id'])
     UserCall().delete(headers, user2['id'])
 
-
-
 @pytest.fixture(scope="module")
 def setup_create_user(get_headers):
     headers = Auth().get_valid_user_headers(get_headers)
@@ -64,5 +62,3 @@ def setup_team_delete_multiple_one_team(get_headers):
     team2 = TeamCall().create(headers, payload_team2)
     yield headers, team, team2
     TeamCall().delete(headers, team2['id'])
-
-

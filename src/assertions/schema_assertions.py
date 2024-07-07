@@ -54,4 +54,6 @@ class AssertionSchemas:
 
     @staticmethod
     def assert_team_add_user_schema_payload_file(payload):
+        if isinstance(payload, str):
+            payload = json.loads(payload)
         return AssertionSchemas().validate_json_schema(payload, "team_add_user_schema.json")

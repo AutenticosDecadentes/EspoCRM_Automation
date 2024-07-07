@@ -1,0 +1,27 @@
+{
+  "type": "object",
+  "properties": {
+    "entityType": {
+      "type": "string"
+    },
+    "action": {
+      "type": "string"
+    },
+    "params": {
+      "type": "object",
+      "properties": {
+        "ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": ["ids"]
+    },
+    "idle": {
+      "type": "boolean"
+    }
+  },
+  "required": ["entityType", "action", "params", "idle"]
+}

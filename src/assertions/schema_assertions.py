@@ -61,3 +61,9 @@ class AssertionSchemas:
     @staticmethod
     def assert_add_team_schema_schema_file(payload):
         return AssertionSchemas().validate_json_schema(payload, "add_team_schema.json")
+
+    @staticmethod
+    def assert_team_delete_multiple_team_schema_payload_file(payload):
+        if isinstance(payload, str):
+            payload = json.loads(payload)
+        return AssertionSchemas().validate_json_schema(payload, "team_delete_multiple_team_schema.json")

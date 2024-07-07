@@ -10,6 +10,13 @@ class PayloadTeam:
         return json.dumps(payload)
 
     @staticmethod
+    def build_payload_unlink_user_team(user_id):
+        payload = {
+            "id": user_id
+        }
+        return json.dumps(payload)
+
+    @staticmethod
     def build_payload_add_team(name, rolesIds=None, rolesNames=None, positionList=None, layoutSetName=None,
                                layoutSetId=None, workingTimeCalendarName=None, workingTimeCalendarId=None):
         payload = {

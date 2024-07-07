@@ -27,3 +27,8 @@ class TeamCall:
     def view_users(cls, headers, team_id):
         response = EspocrmRequest().get(EndpointTeams.team_users(team_id), headers)
         return response.json()
+
+    @classmethod
+    def add_user(cls, headers, payload, team_id):
+        response = EspocrmRequest().post(EndpointTeams.add_users(team_id), headers, payload)
+        return response.json()

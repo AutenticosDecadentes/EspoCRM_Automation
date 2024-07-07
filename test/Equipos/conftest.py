@@ -6,7 +6,6 @@ from src.resources.call_request.team import TeamCall
 from src.resources.call_request.user import UserCall
 
 
-
 @pytest.fixture(scope="module")
 def setup_team_add_user(get_headers):
     headers = Auth().get_valid_user_headers(get_headers)
@@ -25,6 +24,29 @@ def setup_team_add_user(get_headers):
     UserCall().delete(headers, user1['id'])
     UserCall().delete(headers, user2['id'])
 
+
+@pytest.fixture(scope="module")
+def setup_team_unlink_user(get_headers):
+    headers = Auth().get_valid_user_headers(get_headers)
+    payload_team = PayloadTeam().build_payload_add_team("Team Red")
+    payload_user_1 = PayloadUser().build_payload_add_user(userName="javier", salutationName="Mrs.", firstName="Javi",
+                                                          lastName="Garcia")
+
+    payload_user_2 = PayloadUser().build_payload_add_user(userName="ronald", salutationName="Mrs.",
+                                                          firstName="Ronald",
+                                                          lastName="Perez")
+    team = TeamCall().create(headers, payload_team)
+    user1 = UserCall().create(headers, payload_user_1)
+    user2 = UserCall().create(headers, payload_user_2)
+    payload = PayloadTeam().build_payload_add_user_team([user1['id'], user2['id']])
+    TeamCall().add_user(headers, payload, team['id'])
+    yield headers, team, user1, user2
+
+    TeamCall().delete(headers, team['id'])
+    UserCall().delete(headers, user1['id'])
+    UserCall().delete(headers, user2['id'])
+
+
 @pytest.fixture(scope="module")
 def setup_create_user(get_headers):
     headers = Auth().get_valid_user_headers(get_headers)
@@ -33,6 +55,7 @@ def setup_create_user(get_headers):
                                                           lastName="James")
     user = UserCall().create(headers, payload_user_1)
     yield user
+
 
 @pytest.fixture(scope="function")
 def setup_add_team(get_headers):
@@ -52,6 +75,7 @@ def setup_team_delete_multiple_team(get_headers):
     team = TeamCall().create(headers, payload_team)
     team2 = TeamCall().create(headers, payload_team2)
     yield headers, team, team2
+
 
 @pytest.fixture(scope="module")
 def setup_team_delete_multiple_one_team(get_headers):

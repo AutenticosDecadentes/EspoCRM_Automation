@@ -36,3 +36,6 @@ class Auth:
 
     def get_empty_user_headers(self, get_headers, additional_headers=None):
         return self.build_headers(get_headers, "empty_user", additional_headers)
+
+    def get_unauthorized_users_user_headers(self, get_headers, additional_headers=None):
+        return self.build_headers(get_headers, "unauthorized_users_user", additional_headers)

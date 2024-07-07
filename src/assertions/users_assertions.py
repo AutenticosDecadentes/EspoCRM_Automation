@@ -49,3 +49,7 @@ class AssertionUsers:
     @staticmethod
     def assert_list_no_empty(response_json):
         assert response_json['list'] is not None
+
+    @staticmethod
+    def assert_response_true(response):
+        assert response.text == "true"

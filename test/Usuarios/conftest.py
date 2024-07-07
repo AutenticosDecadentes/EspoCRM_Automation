@@ -12,3 +12,13 @@ def setup_create_user(get_headers):
                                                           lastName="aliendre")
     user = UserCall().create(headers, payload_user_1)
     yield headers, user
+
+
+@pytest.fixture(scope="function")
+def setup_add_user(get_headers):
+    headers = Auth().get_valid_user_headers(get_headers)
+    created_users = []
+    yield headers, created_users
+
+    for user in created_users:
+        UserCall().delete(headers, user['id'])

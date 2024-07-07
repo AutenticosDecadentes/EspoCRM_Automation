@@ -5,17 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a4f3901c-302f-44db-8a9d-1a789ed7019e" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/test/Usuarios/conftest.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assertions/equipos_assertions.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assertions/equipos_assertions.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assertions/schema_assertions.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assertions/schema_assertions.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assertions/usuarios_assertions.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assertions/usuarios_assertions.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/espocrm_api/api_request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/espocrm_api/api_request.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/load_resources.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/load_resources.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/Equipos/test_get_usuarios_por_equipo.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/Equipos/test_get_usuarios_por_equipo.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/Equipos/test_lista_equipos.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/Equipos/test_lista_equipos.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/Equipos/test_ver_equipo.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/Equipos/test_ver_equipo.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/Usuarios/test_Lista_usuarios.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/Usuarios/test_Lista_usuarios.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/Usuarios/test_cases.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/Usuarios/test_cases.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/espocrm_api/endpoint_users.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/espocrm_api/endpoint_users.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/payloads/payloads_user.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/payloads/payloads_user.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Equipos/test_add_user_team.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/Equipos/test_add_user_team.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Equipos/test_get_users_by_team.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/Equipos/test_get_users_by_team.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Equipos/test_lits_teams.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/Equipos/test_lits_teams.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Equipos/test_view_team.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/Equipos/test_view_team.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Usuarios/test_list_users.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/Usuarios/test_list_users.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Usuarios/test_order_user_asc.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/Usuarios/test_order_user_asc.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Usuarios/test_search_users.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/Usuarios/test_search_users.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/test_login.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/test_login.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -51,7 +51,7 @@
     "Python.UseM_Automation.executor": "Run",
     "Python.main.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "RefactorCode",
+    "git-widget-placeholder": "create__user",
     "last_opened_file_path": "C:/Users/Nicole Rita/Documents/demo/EspoCRM_Automation",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -77,7 +77,6 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="SDK_NAME" value="Python 3.12 (EspoCRM_Automation)" />
       <option name="WORKING_DIRECTORY" value="C:\Users\migue\OneDrive\Escritorio\Diplo\Modulo 5\EspoCRM_Automation" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
@@ -139,8 +138,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-PY-241.17890.14" />
-        <option value="bundled-python-sdk-5b207ade9991-7e9c3bbb6e34-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-241.17890.14" />
+        <option value="bundled-python-sdk-5b207ade9991-746f403e7f0c-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-241.17890.14" />
       </set>
     </attachedChunks>
   </component>

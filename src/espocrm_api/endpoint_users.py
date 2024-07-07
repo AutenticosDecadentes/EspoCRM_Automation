@@ -4,7 +4,13 @@ from enum import Enum
 
 
 class EndpointUsers(Enum):
-    USER_ERROR = "/NonExistentEndpoint"
+    USER_ERROR = "/NonExistentEndpoint" 
+
+    @classmethod
+    def create_user(cls):
+        """Construye la URL para la creación de un usuario."""
+        return f"{cls.BASE_URI}{cls.USER}"
+
 
     @classmethod
     def user(cls):
@@ -99,3 +105,5 @@ class EndpointUsers(Enum):
         select = "isActive%2CemailAddressIsOptedOut%2CemailAddressIsInvalid%2CemailAddress%2CemailAddressData%2Ctitle%2CuserName%2CsalutationName%2CfirstName%2ClastName%2CmiddleName%2Cname"
         return cls.build_url_order_user(Endpoint.BASE_USER.value, userType, select, maxSize, offset,
                                         orderBy, order)
+    
+

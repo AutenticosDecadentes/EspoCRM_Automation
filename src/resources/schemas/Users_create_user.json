@@ -1,0 +1,204 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "string"
+      },
+      "name": {
+        "type": "string"
+      },
+      "deleted": {
+        "type": "boolean"
+      },
+      "userName": {
+        "type": "string"
+      },
+      "type": {
+        "type": "string"
+      },
+      "authMethod": {
+        "type": "null"
+      },
+      "salutationName": {
+        "type": "string"
+      },
+      "firstName": {
+        "type": "string"
+      },
+      "lastName": {
+        "type": "string"
+      },
+      "isActive": {
+        "type": "boolean"
+      },
+      "title": {
+        "type": "string"
+      },
+      "emailAddress": {
+        "type": "null"
+      },
+      "phoneNumber": {
+        "type": "null"
+      },
+      "gender": {
+        "type": "null"
+      },
+      "createdAt": {
+        "type": "string"
+      },
+      "modifiedAt": {
+        "type": "string"
+      },
+      "lastAccess": {
+        "type": "null"
+      },
+      "targetListIsOptedOut": {
+        "type": "boolean"
+      },
+      "emailAddressIsOptedOut": {
+        "type": "null"
+      },
+      "emailAddressIsInvalid": {
+        "type": "null"
+      },
+      "phoneNumberIsOptedOut": {
+        "type": "null"
+      },
+      "phoneNumberIsInvalid": {
+        "type": "null"
+      },
+      "emailAddressData": {
+        "type": "array",
+        "items": {}
+      },
+      "phoneNumberData": {
+        "type": "array",
+        "items": {}
+      },
+      "defaultTeamId": {
+        "type": "null"
+      },
+      "defaultTeamName": {
+        "type": "null"
+      },
+      "teamsIds": {
+        "type": "array",
+        "items": {}
+      },
+      "teamsNames": {
+        "type": "object"
+      },
+      "teamsColumns": {
+        "type": "object"
+      },
+      "rolesIds": {
+        "type": "array",
+        "items": {}
+      },
+      "rolesNames": {
+        "type": "object"
+      },
+      "portalsIds": {
+        "type": "array",
+        "items": {}
+      },
+      "portalsNames": {
+        "type": "object"
+      },
+      "portalRolesIds": {
+        "type": "array",
+        "items": {}
+      },
+      "portalRolesNames": {
+        "type": "object"
+      },
+      "contactName": {
+        "type": "null"
+      },
+      "accountsIds": {
+        "type": "array",
+        "items": {}
+      },
+      "accountsNames": {
+        "type": "object"
+      },
+      "avatarId": {
+        "type": "null"
+      },
+      "avatarName": {
+        "type": "null"
+      },
+      "createdById": {
+        "type": "string"
+      },
+      "createdByName": {
+        "type": "string"
+      },
+      "dashboardTemplateName": {
+        "type": "null"
+      },
+      "workingTimeCalendarId": {
+        "type": "null"
+      },
+      "workingTimeCalendarName": {
+        "type": "null"
+      },
+      "layoutSetId": {
+        "type": "null"
+      },
+      "layoutSetName": {
+        "type": "null"
+      }
+    },
+    "required": [
+      "id",
+      "name",
+      "deleted",
+      "userName",
+      "type",
+      "authMethod",
+      "salutationName",
+      "firstName",
+      "lastName",
+      "isActive",
+      "title",
+      "emailAddress",
+      "phoneNumber",
+      "gender",
+      "createdAt",
+      "modifiedAt",
+      "lastAccess",
+      "targetListIsOptedOut",
+      "emailAddressIsOptedOut",
+      "emailAddressIsInvalid",
+      "phoneNumberIsOptedOut",
+      "phoneNumberIsInvalid",
+      "emailAddressData",
+      "phoneNumberData",
+      "defaultTeamId",
+      "defaultTeamName",
+      "teamsIds",
+      "teamsNames",
+      "teamsColumns",
+      "rolesIds",
+      "rolesNames",
+      "portalsIds",
+      "portalsNames",
+      "portalRolesIds",
+      "portalRolesNames",
+      "contactName",
+      "accountsIds",
+      "accountsNames",
+      "avatarId",
+      "avatarName",
+      "createdById",
+      "createdByName",
+      "dashboardTemplateName",
+      "workingTimeCalendarId",
+      "workingTimeCalendarName",
+      "layoutSetId",
+      "layoutSetName"
+    ]
+  }
+  

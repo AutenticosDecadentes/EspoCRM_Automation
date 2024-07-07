@@ -53,3 +53,14 @@ class AssertionUsers:
     @staticmethod
     def assert_response_true(response):
         assert response.text == "true"
+
+    @staticmethod
+    def assert_response_is_not_empty(response_text):
+        assert response_text != ''
+
+    @staticmethod
+    def assert_valid_email_response(response_data, expected_email, expected_subject):
+        assert 'id' in response_data, "The response does not contain an ID"
+        assert response_data['to'] == expected_email, f"Expected email {expected_email} but got {response_data['to']}"
+        assert response_data[
+                   'subject'] == expected_subject, f"Expected subject {expected_subject} but got {response_data['subject']}"

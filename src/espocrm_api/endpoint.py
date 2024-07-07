@@ -9,7 +9,11 @@ class Endpoint(Enum):
     BASE_TEAM_VIEW = "/Team/{team_id}"
     BASE_USER = "/User"
     BASE_USER_VIEW = "/User/{user_id}"
-
+    BASE_EMAIL = "/Email"
     @classmethod
     def login(cls):
         return f"{BASE_URI}{cls.LOGIN.value}"
+
+    @classmethod
+    def email(cls):
+        return f"{BASE_URI}{cls.BASE_EMAIL.value}"

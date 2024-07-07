@@ -4,12 +4,13 @@ from enum import Enum
 
 
 class EndpointUsers(Enum):
-    USER_ERROR = "/NonExistentEndpoint" 
+    USER_ERROR = "/NonExistentEndpoint"
+    USER = "/User"
 
     @classmethod
     def create_user(cls):
         """Construye la URL para la creación de un usuario."""
-        return f"{cls.BASE_URI}{cls.USER}"
+        return f"{cls.BASE_URI}{cls.USER.value}"
 
 
     @classmethod

@@ -5,14 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a4f3901c-302f-44db-8a9d-1a789ed7019e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/test/Usuarios/conftest.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/espocrm_api/endpoint_users.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/espocrm_api/endpoint_users.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/payloads/payloads_user.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/payloads/payloads_user.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/Equipos/test_add_user_team.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/Equipos/test_add_user_team.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/Equipos/test_get_users_by_team.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/Equipos/test_get_users_by_team.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/Equipos/test_lits_teams.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/Equipos/test_lits_teams.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/Equipos/test_view_team.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/Equipos/test_view_team.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Usuarios/conftest.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/Usuarios/conftest.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/Usuarios/test_create_user.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/Usuarios/test_create_user.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/Usuarios/test_list_users.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/Usuarios/test_list_users.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/Usuarios/test_order_user_asc.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/Usuarios/test_order_user_asc.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/Usuarios/test_search_users.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/Usuarios/test_search_users.py" afterDir="false" />
@@ -42,26 +42,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python tests.Python tests for test_login.test_login_valido.executor": "Run",
-    "Python tests.Python tests in bin.executor": "Run",
-    "Python tests.Python tests in test_login.py.executor": "Run",
-    "Python.EspoCRM_Automation.executor": "Run",
-    "Python.UseM_Automation.executor": "Run",
-    "Python.main.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "create__user",
-    "last_opened_file_path": "C:/Users/Nicole Rita/Documents/demo/EspoCRM_Automation",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "editor.preferences.fonts.default",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python tests.Python tests for test_login.test_login_valido.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in bin.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in test_login.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python.EspoCRM_Automation.executor&quot;: &quot;Run&quot;,
+    &quot;Python.UseM_Automation.executor&quot;: &quot;Run&quot;,
+    &quot;Python.main.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;create__user&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Nicole Rita/Documents/demo/EspoCRM_Automation&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.fonts.default&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\migue\OneDrive\Escritorio\Diplo\Modulo 5\EspoCRM_Automation\src\espocrm_api" />

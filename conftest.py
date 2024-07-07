@@ -3,7 +3,7 @@ import base64
 from config import X_Api_Key
 
 
-@pytest.fixture
+@pytest.fixture(scope="session")
 def get_headers():
     def _get_headers(username, password, additional_params=None):
         espo_authorization = encoded(username, password)

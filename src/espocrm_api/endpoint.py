@@ -10,6 +10,9 @@ class Endpoint(Enum):
     BASE_USER = "/User"
     BASE_USER_VIEW = "/User/{user_id}"
     BASE_EMAIL = "/Email"
+    BASE_MASS_ACTION = "/MassAction"
+
+
     @classmethod
     def login(cls):
         return f"{BASE_URI}{cls.LOGIN.value}"
@@ -17,3 +20,6 @@ class Endpoint(Enum):
     @classmethod
     def email(cls):
         return f"{BASE_URI}{cls.BASE_EMAIL.value}"
+
+    def massAction(cls):
+        return f"{BASE_URI}{cls.BASE_MASS_ACTION.value}"

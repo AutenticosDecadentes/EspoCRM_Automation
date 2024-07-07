@@ -35,5 +35,9 @@ class AssertionStatusCode:
         assert response.status_code == 405
 
     @staticmethod
+    def assert_status_code_409(response):
+        assert response.status_code == 409
+
+    @staticmethod
     def assert_status_code_500(response):
         assert response.status_code == 500

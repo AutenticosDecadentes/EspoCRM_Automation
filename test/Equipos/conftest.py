@@ -62,3 +62,18 @@ def setup_team_delete_multiple_one_team(get_headers):
     team2 = TeamCall().create(headers, payload_team2)
     yield headers, team, team2
     TeamCall().delete(headers, team2['id'])
+
+
+@pytest.fixture(scope="module")
+def setup_team_delete_team(get_headers):
+    headers = Auth().get_valid_user_headers(get_headers)
+    payload_team = PayloadTeam().build_payload_add_team("Team Golden")
+    team = TeamCall().create(headers, payload_team)
+    yield headers, team
+
+@pytest.fixture(scope="module")
+def setup_team_delete_team_invalid(get_headers):
+    headers = Auth().get_invalid_user_headers(get_headers)
+    payload_team = PayloadTeam().build_payload_add_team("Team Golden")
+    team = TeamCall().create(headers, payload_team)
+    yield headers, team

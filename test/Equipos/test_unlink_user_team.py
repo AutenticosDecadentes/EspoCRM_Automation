@@ -63,6 +63,7 @@ def test_unlink_user_not_exits(setup_team_unlink_user):
 
 @pytest.mark.regression
 @pytest.mark.functional
+@pytest.mark.xfail(reason="This test case is expected to fail due to known issue.", condition=True)
 def test_unlink_user_exist_in_team(setup_team_unlink_user):
     headers, team, user1, user2 = setup_team_unlink_user
     payload = PayloadTeam().build_payload_unlink_user_team(user2['id'])

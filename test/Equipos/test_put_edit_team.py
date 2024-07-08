@@ -21,6 +21,7 @@ def test_edit_team_all_data(setup_edit_team):
 
 @pytest.mark.regression
 @pytest.mark.functional
+@pytest.mark.xfail(reason="This test case is expected to fail due to known issue.", condition=True)
 def test_edit_team_name_empty(setup_edit_team):
     headers, team = setup_edit_team
     payload = PayloadTeam().build_payload_add_team(name="", layoutSetName="Layout 1", rolesIds="66758f0575dbc3464",

@@ -39,7 +39,7 @@ def test_add_team_duplicate_name(setup_add_team):
 @pytest.mark.functional
 def test_add_team_all_data(setup_add_team):
     headers, created_teams = setup_add_team
-    payload = PayloadTeam().build_payload_add_team(name="prueba1111", rolesNames="Mortal", layoutSetName="Layout 1", workingTimeCalendarName="Calendar")
+    payload = PayloadTeam().build_payload_add_team(name="prueba1111", rolesIds="66758f0575dbc3464", rolesNames="Prueba", layoutSetName="Layout 1", workingTimeCalendarName="Calendar", layoutSetId="6675949a021ad4859", workingTimeCalendarId="667594aa8582445d8")
     response = EspocrmRequest().post(EndpointTeams.team(), headers, payload)
     AssertionStatusCode().assert_status_code_200(response)
     AssertionSchemas().assert_add_team_schema_schema_file(response.json())
@@ -51,7 +51,7 @@ def test_add_team_all_data(setup_add_team):
 @pytest.mark.functional
 def test_add_team_with_valid_user(setup_add_team):
     headers, created_teams = setup_add_team
-    payload = PayloadTeam().build_payload_add_team(name="prueba_valid_user", rolesNames="Mortal", layoutSetName="Layout 1", workingTimeCalendarName="Calendar")
+    payload = PayloadTeam().build_payload_add_team(name="prueba_valid_user", layoutSetName="Layout 1", workingTimeCalendarName="Calendar", layoutSetId="6675949a021ad4859", workingTimeCalendarId="667594aa8582445d8")
     response = EspocrmRequest().post(EndpointTeams.team(), headers, payload)
     AssertionStatusCode().assert_status_code_200(response)
     AssertionSchemas().assert_add_team_schema_schema_file(response.json())
@@ -64,8 +64,7 @@ def test_add_team_with_valid_user(setup_add_team):
 def test_add_team_with_invalid_user(setup_add_team, get_headers):
     headers = Auth().get_invalid_user_headers(get_headers)
     created_teams = setup_add_team
-    payload = PayloadTeam().build_payload_add_team(name="prueba_invalid_user", rolesNames="Mortal",
-                                                   layoutSetName="Layout 1", workingTimeCalendarName="Calendar")
+    payload = PayloadTeam().build_payload_add_team(name="prueba_invalid_user", layoutSetName="Layout 1", workingTimeCalendarName="Calendar", layoutSetId="6675949a021ad4859", workingTimeCalendarId="667594aa8582445d8")
     response = EspocrmRequest().post(EndpointTeams.team(), headers, payload)
     AssertionStatusCode().assert_status_code_401(response)
 

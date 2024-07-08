@@ -58,9 +58,13 @@ def test_edit_team_with_valid_user(setup_edit_team):
 @pytest.mark.functional
 def test_add_team_with_invalid_user(setup_edit_team, get_headers):
     headers = Auth().get_invalid_user_headers(get_headers)
-    team = setup_edit_team
-    payload = PayloadTeam().build_payload_add_team(name="prueba_invalid_user", layoutSetName="Layout 1",
-                                                   workingTimeCalendarName="Calendar", layoutSetId="6675949a021ad4859",
-                                                   workingTimeCalendarId="667594aa8582445d8")
+    valid_headers, team = setup_edit_team
+    payload = PayloadTeam().build_payload_add_team(
+        name="prueba_invalid_user",
+        layoutSetName="Layout 1",
+        workingTimeCalendarName="Calendar",
+        layoutSetId="6675949a021ad4859",
+        workingTimeCalendarId="667594aa8582445d8"
+    )
     response = EspocrmRequest().put(EndpointTeams.view(team['id']), headers, payload)
     AssertionStatusCode().assert_status_code_401(response)

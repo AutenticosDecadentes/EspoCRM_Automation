@@ -99,3 +99,7 @@ class EndpointUsers(Enum):
         select = "isActive%2CemailAddressIsOptedOut%2CemailAddressIsInvalid%2CemailAddress%2CemailAddressData%2Ctitle%2CuserName%2CsalutationName%2CfirstName%2ClastName%2CmiddleName%2Cname"
         return cls.build_url_order_user(Endpoint.BASE_USER.value, userType, select, maxSize, offset,
                                         orderBy, order)
+
+    @staticmethod
+    def duplicate_data():
+        return f"{BASE_URI}{Endpoint.BASE_USER.value}{Endpoint.BASE_DUPLICATE.value}"

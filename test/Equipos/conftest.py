@@ -86,3 +86,12 @@ def setup_team_delete_multiple_one_team(get_headers):
     team2 = TeamCall().create(headers, payload_team2)
     yield headers, team, team2
     TeamCall().delete(headers, team2['id'])
+
+
+@pytest.fixture(scope="function")
+def setup_edit_team(get_headers):
+    headers = Auth().get_valid_user_headers(get_headers)
+    payload_team = PayloadTeam().build_payload_add_team("probando_ando")
+    team = TeamCall().create(headers, payload_team)
+    yield headers, team
+    TeamCall().delete(headers, team['id'])

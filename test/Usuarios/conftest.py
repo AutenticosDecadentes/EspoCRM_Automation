@@ -80,3 +80,23 @@ def setup_multiple_user(get_headers):
     UserCall().delete(headers, user3['id'])
     UserCall().delete(headers, user4['id'])
 
+
+@pytest.fixture(scope="function")
+def setup_duplicate_data_team(get_headers):
+    headers = Auth().get_valid_user_headers(get_headers)
+    payload_user = PayloadUser().build_payload_add_user(userName="nicole", salutationName="Mrs.", firstName="Nico",
+                                                          lastName="Vega")
+    user = UserCall().create(headers, payload_user)
+    yield headers, user
+
+    UserCall.delete(headers, user['id'])
+
+@pytest.fixture(scope="function")
+def setup_add_avatar(get_headers):
+    headers = Auth().get_valid_user_headers(get_headers)
+    payload_user = PayloadUser().build_payload_add_user(userName="anitas", salutationName="Mrs.", firstName="anis", lastName="analia")
+    user = UserCall().create(headers, payload_user)   
+    yield headers, user
+
+    UserCall().delete(headers, user['id'])
+

@@ -79,3 +79,21 @@ class AssertionSchemas:
         if isinstance(payload, str):
             payload = json.loads(payload)
         return AssertionSchemas.validate_json_schema(payload, "test_update_multiple_users.json")
+
+    @staticmethod
+    def assert_user_duplicate_data_schema_payload_file(payload):
+        if isinstance(payload, str):
+            payload = json.loads(payload)
+        return AssertionSchemas().validate_json_schema(payload, "user_duplicate_data_payload_schema.json")
+
+    @staticmethod
+    def assert_user_duplicate_data_schema_file(response):
+        return AssertionSchemas().validate_json_schema(response, "user_duplicate_data_response_schema.json")
+
+    @staticmethod
+    def assert_add_user_schema_file(payload):
+        return AssertionSchemas().validate_json_schema(payload, "add_user_schema.json")
+    @staticmethod
+    def assert_add_avatar_schema_file(payload):
+        return AssertionSchemas().validate_json_schema(payload, "add_avatar_schema.json")
+

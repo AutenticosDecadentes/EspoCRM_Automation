@@ -100,5 +100,10 @@ class PayloadUser:
                 }
             },
             "idle": False
+
+    @staticmethod       
+    def build_payload_duplicate_data_user(user_id):
+        payload = {
+            "id": user_id
         }
         return json.dumps(payload)

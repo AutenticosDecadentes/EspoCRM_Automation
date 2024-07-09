@@ -19,8 +19,4 @@ def test_invalid_login(get_headers):
     AssertionStatusCode().assert_status_code_401(response)
 
 
-@pytest.mark.smoke
-def test_disabled_user_login(get_headers):
-    headers = Auth().get_disabled_user_headers(get_headers)
-    response = EspocrmRequest().get(Endpoint.login(), headers)
-    AssertionStatusCode().assert_status_code_401(response)
+

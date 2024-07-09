@@ -1,0 +1,76 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "string"
+      },
+      "name": {
+        "type": "string"
+      },
+      "deleted": {
+        "type": "boolean"
+      },
+      "type": {
+        "type": "string"
+      },
+      "size": {
+        "type": "integer"
+      },
+      "field": {
+        "type": "string"
+      },
+      "isBeingUploaded": {
+        "type": "boolean"
+      },
+      "createdAt": {
+        "type": "string"
+      },
+      "role": {
+        "type": "string"
+      },
+      "storage": {
+        "type": "string"
+      },
+      "storageFilePath": {
+        "type": "null"
+      },
+      "global": {
+        "type": "boolean"
+      },
+      "parentName": {
+        "type": "null"
+      },
+      "relatedType": {
+        "type": "string"
+      },
+      "relatedName": {
+        "type": "null"
+      },
+      "createdById": {
+        "type": "string"
+      },
+      "createdByName": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "id",
+      "name",
+      "deleted",
+      "type",
+      "size",
+      "field",
+      "isBeingUploaded",
+      "createdAt",
+      "role",
+      "storage",
+      "storageFilePath",
+      "global",
+      "parentName",
+      "relatedType",
+      "relatedName",
+      "createdById",
+      "createdByName"
+    ]
+  }

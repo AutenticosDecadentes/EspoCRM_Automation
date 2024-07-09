@@ -14,7 +14,6 @@ def test_send_user_email_with_required_fields(setup_teardown_user):
     headers, user = setup_teardown_user
     payload = PayloadUser().build_payload_email(to=user["emailAddress"],subject="Prueba")
     response = EspocrmRequest().post(Endpoint.email(),headers,payload)
-    print(response.text)
     AssertionStatusCode().assert_status_code_200(response)
     AssertionUsers().assert_response_is_not_empty(response)
     response_data = response.json()
@@ -29,5 +28,4 @@ def test_send_user_email_with_invalid_data(setup_teardown_user):
     invalid_subject = ""
     payload = PayloadUser().build_payload_email(to=invalid_email, subject=invalid_subject)
     response = EspocrmRequest().post(Endpoint.email(), headers, payload)
-    print(response.text)
     AssertionStatusCode().assert_status_code_400(response)

@@ -85,7 +85,7 @@ def test_list_teams_invalid_authentication(get_headers):
     headers = Auth().get_invalid_user_headers(get_headers)
     response = EspocrmRequest().get(EndpointTeams.list(), headers)
     AssertionStatusCode().assert_status_code_401(response)
-    AssertionTeams().assert_response_e(response.text)
+    AssertionTeams().assert_response_empty(response.text)
 
 
 @pytest.mark.regression

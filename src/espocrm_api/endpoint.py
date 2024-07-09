@@ -11,6 +11,7 @@ class Endpoint(Enum):
     BASE_USER_VIEW = "/User/{user_id}"
     BASE_EMAIL = "/Email"
     BASE_MASS_ACTION = "/MassAction"
+    BASE_DUPLICATE = "/action/getDuplicateAttributes"
 
     @classmethod
     def login(cls):

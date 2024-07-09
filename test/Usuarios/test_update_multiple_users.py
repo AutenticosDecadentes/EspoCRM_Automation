@@ -32,7 +32,7 @@ def test_invalid_user_role_update(setup_multiple_user, get_headers):
 @pytest.mark.functional
 @pytest.mark.xfail(reason="This test case is expected to fail due to known issue.", condition=True)
 def test_nonexistent_users_update(setup_multiple_user):
-    headers, _, _, _, _ = setup_multiple_user
+    headers, user1, user2, user3, user4 = setup_multiple_user
     nonexistent_user_ids = ["nonexistent_id_1", "nonexistent_id_2", "nonexistent_id_3"]
     payload = PayloadUser().build_payload_update_users_roles(nonexistent_user_ids, "66758f2c021e4e23f")
     response = EspocrmRequest().post(Endpoint.massAction(), headers, payload)

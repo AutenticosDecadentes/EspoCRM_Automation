@@ -8,6 +8,8 @@ from src.resources.call_request.user import UserCall
 from src.payloads.payloads_user import PayloadUser
 
 
+@pytest.mark.smoke
+@pytest.mark.functional
 def test_send_user_email_with_required_fields(setup_teardown_user):
     headers, user = setup_teardown_user
     payload = PayloadUser().build_payload_email(to=user["emailAddress"],subject="Prueba")
@@ -18,6 +20,9 @@ def test_send_user_email_with_required_fields(setup_teardown_user):
     response_data = response.json()
     AssertionUsers().assert_valid_email_response(response_data, user["emailAddress"], "Prueba")
 
+
+@pytest.mark.smoke
+@pytest.mark.functional
 def test_send_user_email_with_invalid_data(setup_teardown_user):
     headers, user = setup_teardown_user
     invalid_email = "invalid_email_format"

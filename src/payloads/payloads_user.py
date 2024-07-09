@@ -49,11 +49,14 @@ class PayloadUser:
             "passwordConfirm": passwordConfirm
         }
         return json.dumps(payload)
+
     @staticmethod
-    def build_payload_email(status="Sending", to=None, isRead = True, isImportant = False , inTrash = False, folderId=None, isUsers=False, isHtml=True, isSystem=False, isJustSent=False,
-                            fromAddress="hhellooworld01@gmail.com", cc="", bcc="", parentType=None, parentName=None, parentId=None, selectTemplateName=None,
+    def build_payload_email(status="Sending", to=None, isRead=True, isImportant=False, inTrash=False, folderId=None,
+                            isUsers=False, isHtml=True, isSystem=False, isJustSent=False,
+                            fromAddress="hhellooworld01@gmail.com", cc="", bcc="", parentType=None, parentName=None,
+                            parentId=None, selectTemplateName=None,
                             selectTemplateId=None,
-                            subject=None, attachmentsIds=None, body=None , bodyPlain=None):
+                            subject=None, attachmentsIds=None, body=None, bodyPlain=None):
         payload = {
             "status": status,
             "to": to,
@@ -100,8 +103,10 @@ class PayloadUser:
                 }
             },
             "idle": False
+        }
+        return json.dumps(payload)
 
-    @staticmethod       
+    @staticmethod
     def build_payload_duplicate_data_user(user_id):
         payload = {
             "id": user_id

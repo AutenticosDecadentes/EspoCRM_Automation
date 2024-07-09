@@ -1,0 +1,15 @@
+{
+    "action": "update",
+    "data": {
+        "actions": {},
+        "values": {}
+    },
+    "entityType": "User",
+    "idle": false,
+    "params": {
+        "ids": ["id1", "id2", "id3"],
+        "searchParams": null,
+        "where": null
+    }
+}
+

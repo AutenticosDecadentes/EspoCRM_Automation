@@ -50,3 +50,33 @@ def setup_add_user(get_headers):
 
     for user in created_users:
         UserCall().delete(headers, user['id'])
+
+
+
+@pytest.fixture(scope="function")
+def setup_multiple_user(get_headers):
+    headers = Auth().get_valid_user_headers(get_headers)
+    payload_user_1 = PayloadUser().build_payload_add_user(userName="masivo1", salutationName="Mrs.",
+                                                          firstName="alendro",
+                                                          lastName="alire")
+    payload_user_2 = PayloadUser().build_payload_add_user(userName="masivo2", salutationName="Mrs.",
+                                                          firstName="alendro",
+                                                          lastName="aliere")
+    payload_user_3 = PayloadUser().build_payload_add_user(userName="masivo3", salutationName="Mrs.",
+                                                          firstName="alejano",
+                                                          lastName="aliere")
+    payload_user_4 = PayloadUser().build_payload_add_user(userName="masivo4", salutationName="Mrs.",
+                                                          firstName="alejndro",
+                                                          lastName="aliere")
+    user1 = UserCall().create(headers, payload_user_1)
+    user2 = UserCall().create(headers, payload_user_2)
+    user3 = UserCall().create(headers, payload_user_3)
+    user4 = UserCall().create(headers, payload_user_4)
+
+    yield headers, user1, user2, user3, user4
+
+    UserCall().delete(headers, user1['id'])
+    UserCall().delete(headers, user2['id'])
+    UserCall().delete(headers, user3['id'])
+    UserCall().delete(headers, user4['id'])
+

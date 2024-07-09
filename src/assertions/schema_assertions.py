@@ -73,3 +73,9 @@ class AssertionSchemas:
         if isinstance(payload, str):
             payload = json.loads(payload)
         return AssertionSchemas().validate_json_schema(payload, "team_unlink_user_schema.json")
+
+    @staticmethod
+    def assert_user_update_multiple_users_schema_payload_file(payload):
+        if isinstance(payload, str):
+            payload = json.loads(payload)
+        return AssertionSchemas.validate_json_schema(payload, "test_update_multiple_users.json")

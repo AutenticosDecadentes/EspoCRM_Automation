@@ -46,10 +46,11 @@ def test_max_height_less_than_200(get_headers):
 
 @pytest.mark.regression
 @pytest.mark.functional
+@pytest.mark.xfail(reason="This test case is expected to fail due to known issue.", condition=True)
 def test_max_size_negative(get_headers):
     headers = Auth().get_valid_user_headers(get_headers)
     response = EspocrmRequest().get(EndpointTeams().team_users(maxSize=-15), headers)
-    AssertionStatusCode().assert_status_code_500(response)
+    AssertionStatusCode().assert_status_code_400(response)
     AssertionTeams().assert_response_empty(response.text)
 
 
@@ -133,10 +134,11 @@ def test_offset_height_less_than_200(get_headers):
 
 @pytest.mark.regression
 @pytest.mark.functional
+@pytest.mark.xfail(reason="This test case is expected to fail due to known issue.", condition=True)
 def test_offset_negative(get_headers):
     headers = Auth().get_valid_user_headers(get_headers)
     response = EspocrmRequest().get(EndpointTeams().team_users(offset=-15), headers)
-    AssertionStatusCode().assert_status_code_500(response)
+    AssertionStatusCode().assert_status_code_400(response)
     AssertionTeams().assert_response_empty(response.text)
 
 

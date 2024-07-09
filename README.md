@@ -1,3 +1,4 @@
+[![EspoCRM Pipeline Execution Test](https://github.com/AutenticosDecadentes/EspoCRM_Automation/actions/workflows/pipeline.yml/badge.svg)](https://github.com/AutenticosDecadentes/EspoCRM_Automation/actions/workflows/pipeline.yml)
 # EspoCRM Automation
 
 Automatización de pruebas para EspoCRM, enfocada en los módulos de equipos y usuarios utilizando

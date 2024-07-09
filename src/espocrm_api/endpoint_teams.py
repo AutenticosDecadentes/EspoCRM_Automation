@@ -72,3 +72,8 @@ class EndpointTeams:
     @classmethod
     def delete(cls, team_id):
         return cls.build_url_add_user_team(Endpoint.BASE_TEAM_VIEW.value, team_id)
+
+    @classmethod 
+    def delete_users(cls, team_id):
+        return cls.build_url_add_user_team(Endpoint.BASE_TEAM_USERS.value, team_id)
+

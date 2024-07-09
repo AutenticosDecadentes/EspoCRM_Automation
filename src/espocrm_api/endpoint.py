@@ -9,11 +9,18 @@ class Endpoint(Enum):
     BASE_TEAM_VIEW = "/Team/{team_id}"
     BASE_USER = "/User"
     BASE_USER_VIEW = "/User/{user_id}"
+    BASE_EMAIL = "/Email"
     BASE_MASS_ACTION = "/MassAction"
+    BASE_DUPLICATE = "/action/getDuplicateAttributes"
+    BASE_ATTACHMENT ="/Attachment"
 
     @classmethod
     def login(cls):
         return f"{BASE_URI}{cls.LOGIN.value}"
+
+    @classmethod
+    def email(cls):
+        return f"{BASE_URI}{cls.BASE_EMAIL.value}"
 
     @classmethod
     def massAction(cls):

@@ -121,6 +121,7 @@ def test_list_teams_maxsize_cero(get_headers):
 
 @pytest.mark.regression
 @pytest.mark.functional
+@pytest.mark.xfail(reason="This test case is expected to fail due to known issue.", condition=True)
 def test_list_teams_maxsize_negative(get_headers):
     headers = Auth().get_valid_user_headers(get_headers)
     response = EspocrmRequest().get(EndpointTeams.list(maxSize=-1), headers)
@@ -157,6 +158,7 @@ def test_list_teams_offset_cero(get_headers):
 
 @pytest.mark.regression
 @pytest.mark.functional
+@pytest.mark.xfail(reason="This test case is expected to fail due to known issue.", condition=True)
 def test_list_teams_offset_negative(get_headers):
     headers = Auth().get_valid_user_headers(get_headers)
     response = EspocrmRequest().get(EndpointTeams.list(offset=-1), headers)

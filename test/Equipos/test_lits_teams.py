@@ -6,8 +6,6 @@ from src.assertions.status_code_assertions import AssertionStatusCode
 from src.assertions.schema_assertions import AssertionSchemas
 from src.assertions.teams_assertions import AssertionTeams
 
-
-@pytest.mark.smoke
 @pytest.mark.regression
 @pytest.mark.functional
 def test_list_teams_with_data(get_headers):
@@ -87,7 +85,7 @@ def test_list_teams_invalid_authentication(get_headers):
     headers = Auth().get_invalid_user_headers(get_headers)
     response = EspocrmRequest().get(EndpointTeams.list(), headers)
     AssertionStatusCode().assert_status_code_401(response)
-    AssertionTeams().assert_response_empty(response.text)
+    AssertionTeams().assert_response_e(response.text)
 
 
 @pytest.mark.regression

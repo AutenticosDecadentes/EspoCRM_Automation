@@ -1,12 +1,10 @@
 import pytest, random, string
-from src.espocrm_api.endpoint_users import EndpointUsers
-from src.resources.authentifications.authentification import Auth
 from src.espocrm_api.api_request import EspocrmRequest
 from src.assertions.status_code_assertions import AssertionStatusCode
 from src.assertions.users_assertions import AssertionUsers
 from src.resources.call_request.user import UserCall
-
-
+from src.resources.authentifications.authentification import Auth
+from src.espocrm_api.endpoint_users import EndpointUsers
 @pytest.mark.smoke
 def test_delete_user_valid_user(setup_create_user):
     headers, user = setup_create_user

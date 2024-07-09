@@ -82,6 +82,26 @@ class PayloadUser:
         return json.dumps(payload)
 
     @staticmethod
+    def build_payload_update_users_roles(user_ids, role_id):
+        payload = {
+            "action": "update",
+            "entityType": "User",
+            "params": {
+                "ids": user_ids,
+                "where": None,
+                "searchParams": None
+            },
+            "data": {
+                "values": {
+                    "rolesIds": [role_id]
+                },
+                "actions": {
+                    "rolesIds": "update"
+                }
+            },
+            "idle": False
+
+    @staticmethod       
     def build_payload_duplicate_data_user(user_id):
         payload = {
             "id": user_id

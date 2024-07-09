@@ -103,3 +103,7 @@ class EndpointUsers(Enum):
     @staticmethod
     def duplicate_data():
         return f"{BASE_URI}{Endpoint.BASE_USER.value}{Endpoint.BASE_DUPLICATE.value}"
+
+    @classmethod
+    def avatar(cls):
+        return cls.build_url_order_user(Endpoint.BASE_ATTACHMENT.value)

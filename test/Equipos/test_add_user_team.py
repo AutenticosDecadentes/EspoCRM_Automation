@@ -83,17 +83,17 @@ def test_add_team_user_exist(setup_team_add_user):
     AssertionTeams().assert_users_in_team([user1['id']], team_users)
 
 
-# @pytest.mark.regression
-# @pytest.mark.functional
-# def test_add_team_not_exists(get_headers):
-#     headers = Auth().get_valid_user_headers(get_headers)
-#     team_id_invalid = ''.join(random.choices(string.ascii_letters + string.digits, k=17))
-#     user_id_invalid = ''.join(random.choices(string.ascii_letters + string.digits, k=17))
-#     payload = PayloadTeam().build_payload_add_user_team([user_id_invalid])
-#     AssertionSchemas().assert_team_add_user_schema_payload_file(payload)
-#     response = EspocrmRequest().post(EndpointTeams.add_users(team_id_invalid), headers, payload)
-#     AssertionStatusCode().assert_status_code_404(response)
-#     AssertionTeams().assert_response_empty(response.text)
+@pytest.mark.regression
+@pytest.mark.functional
+def test_add_team_not_exists(get_headers):
+    headers = Auth().get_valid_user_headers(get_headers)
+    team_id_invalid = ''.join(random.choices(string.ascii_letters + string.digits, k=17))
+    user_id_invalid = ''.join(random.choices(string.ascii_letters + string.digits, k=17))
+    payload = PayloadTeam().build_payload_add_user_team([user_id_invalid])
+    AssertionSchemas().assert_team_add_user_schema_payload_file(payload)
+    response = EspocrmRequest().post(EndpointTeams.add_users(team_id_invalid), headers, payload)
+    AssertionStatusCode().assert_status_code_404(response)
+    AssertionTeams().assert_response_empty(response.text)
 
 
 @pytest.mark.regression
@@ -113,7 +113,7 @@ def test_add_deleted_user(setup_team_add_user, setup_create_user_team):
     headers, team, user1, user2 = setup_team_add_user
     user3 = setup_create_user_team
     UserCall().delete(headers, user3['id'])
-    payload = PayloadTeam().build_payload_add_user_team([user3["id"]])
+    payload = PayloadTeam().build_payload_add_user_team([user3['id']])
     response = EspocrmRequest().post(EndpointTeams.add_users(team['id']), headers, payload)
     AssertionStatusCode().assert_status_code_404(response)
     AssertionTeams().assert_response_empty(response.text)

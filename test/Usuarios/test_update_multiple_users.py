@@ -57,7 +57,7 @@ def test_add_role_invalid_permissions(setup_multiple_user, get_headers):
 @pytest.mark.smoke
 @pytest.mark.functional
 @pytest.mark.xfail(reason="This test case is expected to fail due to known issue.", condition=True)
-def test_successful_role_update(setup_multiple_user):
+def test_successful_custom_fields(setup_multiple_user):
     headers, user1, user2, user3, user4 = setup_multiple_user
     user_ids = [user1['id'], user2['id'], user3['id'], user4['id']]
     payload = PayloadUser().build_payload_update_users_roles(user_ids, "0a0a0a0a0a0a0a0a0")

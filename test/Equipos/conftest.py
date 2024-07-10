@@ -48,7 +48,7 @@ def setup_team_unlink_user(get_headers):
 
 
 @pytest.fixture(scope="function")
-def setup_create_user(get_headers):
+def setup_create_user_team(get_headers):
     headers = Auth().get_valid_user_headers(get_headers)
     payload_user_1 = PayloadUser().build_payload_add_user(userName="charles", salutationName="Mrs.",
                                                           firstName="Charles",

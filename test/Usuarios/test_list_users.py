@@ -10,8 +10,8 @@ from src.assertions.users_assertions import AssertionUsers
 @pytest.mark.smoke
 @pytest.mark.regression
 @pytest.mark.functional
-def test_list_users_with_successful_data(get_headers):
-    headers = Auth().get_valid_user_headers(get_headers)
+def test_list_users_with_successful_data(setup_duplicate_data_user):
+    headers, user = setup_duplicate_data_user
     response = EspocrmRequest().get(EndpointUsers.list(), headers)
     AssertionStatusCode().assert_status_code_200(response)
     AssertionSchemas().assert_users_list_schema_file(response.json())
@@ -19,26 +19,27 @@ def test_list_users_with_successful_data(get_headers):
 
 @pytest.mark.regression
 @pytest.mark.functional
-def test_list_users_required_authentication(get_headers):
-    headers = Auth().get_invalid_user_headers(get_headers)
-    response = EspocrmRequest().get(EndpointUsers.list(), headers)
+def test_list_users_required_authentication(setup_duplicate_data_user):
+    headers, user = setup_duplicate_data_user
+    headersInvalid = {"accept": "/"}
+    response = EspocrmRequest().get(EndpointUsers.list(), headersInvalid)
     AssertionStatusCode().assert_status_code_401(response)
 
 
 @pytest.mark.regression
 @pytest.mark.functional
-def test_list_users_descending_order(get_headers):
-    headers = Auth().get_valid_user_headers(get_headers)
+def test_list_users_descending_order(setup_duplicate_data_user):
+    headers, user = setup_duplicate_data_user
     response = EspocrmRequest().get(EndpointUsers.list(order='desc'), headers)
     AssertionStatusCode().assert_status_code_200(response)
     AssertionSchemas().assert_users_list_schema_file(response.json())
 
 
-#
+
 @pytest.mark.regression
 @pytest.mark.functional
-def test_list_users_ascending_order(get_headers):
-    headers = Auth().get_valid_user_headers(get_headers)
+def test_list_users_ascending_order(setup_duplicate_data_user):
+    headers, user = setup_duplicate_data_user
     response = EspocrmRequest().get(EndpointUsers.list(order='asc'), headers)
     AssertionStatusCode().assert_status_code_200(response)
     AssertionSchemas().assert_users_list_schema_file(response.json())
@@ -46,8 +47,8 @@ def test_list_users_ascending_order(get_headers):
 
 @pytest.mark.regression
 @pytest.mark.functional
-def test_list_users_empty_list(get_headers):
-    headers = Auth().get_valid_user_headers(get_headers)
+def test_list_users_empty_list(setup_duplicate_data_user):
+    headers, user = setup_duplicate_data_user
     response = EspocrmRequest().get(EndpointUsers.list(maxSize=0), headers)
     AssertionStatusCode().assert_status_code_200(response)
     AssertionSchemas().assert_users_list_schema_file(response.json())
@@ -56,8 +57,8 @@ def test_list_users_empty_list(get_headers):
 
 @pytest.mark.regression
 @pytest.mark.functional
-def test_list_users_specified_fields(get_headers):
-    headers = Auth().get_valid_user_headers(get_headers)
+def test_list_users_specified_fields(setup_duplicate_data_user):
+    headers, user = setup_duplicate_data_user
     response = EspocrmRequest().get(EndpointUsers.list(maxSize=0), headers)
     AssertionStatusCode().assert_status_code_200(response)
     AssertionSchemas().assert_users_list_schema_file(response.json())
@@ -65,17 +66,17 @@ def test_list_users_specified_fields(get_headers):
 
 @pytest.mark.regression
 @pytest.mark.functional
-def test_list_users_total(get_headers):
-    headers = Auth().get_valid_user_headers(get_headers)
+def test_list_users_total(setup_duplicate_data_user):
+    headers, user = setup_duplicate_data_user
     response = EspocrmRequest().get(EndpointUsers.list(maxSize=0), headers)
     AssertionStatusCode().assert_status_code_200(response)
     AssertionSchemas().assert_users_list_schema_file(response.json())
 
 
-#
+
 @pytest.mark.regression
 @pytest.mark.functional
-def test_list_users_address_not_found(get_headers):
-    headers = Auth().get_valid_user_headers(get_headers)
+def test_list_users_address_not_found(setup_duplicate_data_user):
+    headers, user = setup_duplicate_data_user
     response = EspocrmRequest().get(EndpointUsers.user_error(), headers)
     AssertionStatusCode().assert_status_code_404(response)

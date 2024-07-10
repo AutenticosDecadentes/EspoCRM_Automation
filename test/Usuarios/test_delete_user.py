@@ -18,7 +18,6 @@ def test_delete_user_valid_user(setup_create_user):
     AssertionUsers().assert_response_true(response)
 
 
-@pytest.mark.smoke
 @pytest.mark.functional
 def test_delete_user_invalid_user(setup_create_user, get_headers):
     headers, user = setup_create_user
@@ -29,7 +28,6 @@ def test_delete_user_invalid_user(setup_create_user, get_headers):
     UserCall().delete(headersAux, user['id'])
 
 
-@pytest.mark.smoke
 @pytest.mark.functional
 def test_delete_user_nonexistent_user(get_headers):
     headers = Auth().get_valid_user_headers(get_headers)

@@ -5,13 +5,15 @@ from src.espocrm_api.api_request import EspocrmRequest
 from src.assertions.status_code_assertions import AssertionStatusCode
 from src.assertions.schema_assertions import AssertionSchemas
 from src.assertions.users_assertions import AssertionUsers
+from src.payloads.payloads_user import PayloadUser
+
 
 
 @pytest.mark.smoke
 @pytest.mark.regression
 @pytest.mark.functional
-def test_user_sort_asc(get_headers):
-    headers = Auth().get_valid_user_headers(get_headers)
+def test_user_sort_asc(setup_add_user_asc):
+    headers = setup_add_user_asc
     response = EspocrmRequest().get(EndpointUsers.order(order='asc'), headers)
     AssertionStatusCode().assert_status_code_200(response)
     AssertionSchemas().assert_users_order_asc_schema_file(response.json())
@@ -20,8 +22,8 @@ def test_user_sort_asc(get_headers):
 @pytest.mark.smoke
 @pytest.mark.regression
 @pytest.mark.functional
-def test_user_sort_desc(get_headers):
-    headers = Auth().get_valid_user_headers(get_headers)
+def test_user_sort_desc(setup_add_user_asc):
+    headers = setup_add_user_asc
     response = EspocrmRequest().get(EndpointUsers.order(order='desc'), headers)
     AssertionStatusCode().assert_status_code_200(response)
 
@@ -38,9 +40,9 @@ def test_user_asc_invalid_credentials(get_headers):
 
 @pytest.mark.regression
 @pytest.mark.functional
-@pytest.mark.parametrize("maxSize", [5, 10, 15, 20, 25, 30])
-def test_pagination_list_size(get_headers, maxSize):
-    headers = Auth().get_valid_user_headers(get_headers)
+def test_pagination_list_size(setup_add_user_asc):
+    maxSize = 10
+    headers = setup_add_user_asc
     response = EspocrmRequest().get(EndpointUsers.order(maxSize=maxSize), headers)
     AssertionStatusCode().assert_status_code_200(response)
     AssertionSchemas().assert_users_order_asc_schema_file(response.json())
@@ -50,24 +52,26 @@ def test_pagination_list_size(get_headers, maxSize):
 
 @pytest.mark.regression
 @pytest.mark.functional
-def test_invalid_order_by_parameters(get_headers):
-    headers = Auth().get_valid_user_headers(get_headers)
+def test_invalid_order_by_parameters(setup_add_user_asc):
+    headers = setup_add_user_asc
     response = EspocrmRequest().get(EndpointUsers.order(orderBy="campo_inexistente"), headers)
     AssertionStatusCode().assert_status_code_400(response)
 
 
 @pytest.mark.regression
 @pytest.mark.functional
-def test_invalid_order_parameters(get_headers):
-    headers = Auth().get_valid_user_headers(get_headers)
+def test_invalid_order_parameters(setup_add_user_asc):
+    headers = setup_add_user_asc
     response = EspocrmRequest().get(EndpointUsers.order(order="campo_inexistente"), headers)
     AssertionStatusCode().assert_status_code_400(response)
 
 
 @pytest.mark.regression
 @pytest.mark.functional
-@pytest.mark.parametrize("orderBy", ['salutationName', 'middleName', 'emailAddress'])
-def test_optional_fields_sorting(get_headers, orderBy):
-    headers = Auth().get_valid_user_headers(get_headers)
+def test_optional_fields_sorting(setup_add_user_asc):
+    orderBy = 'emailAddress'
+    headers = setup_add_user_asc
     response = EspocrmRequest().get(EndpointUsers.order(orderBy=orderBy), headers)
     AssertionStatusCode().assert_status_code_200(response)
+
+

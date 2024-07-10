@@ -54,7 +54,6 @@ def setup_add_user(get_headers):
         UserCall().delete(headers, user['id'])
 
 
-
 @pytest.fixture(scope="function")
 def setup_multiple_user(get_headers):
     headers = Auth().get_valid_user_headers(get_headers)
@@ -87,20 +86,23 @@ def setup_multiple_user(get_headers):
 def setup_duplicate_data_user(get_headers):
     headers = Auth().get_valid_user_headers(get_headers)
     payload_user = PayloadUser().build_payload_add_user(userName="nicole", salutationName="Mrs.", firstName="Nico",
-                                                          lastName="Vega")
+                                                        lastName="Vega")
     user = UserCall().create(headers, payload_user)
     yield headers, user
 
     UserCall.delete(headers, user['id'])
 
+
 @pytest.fixture(scope="function")
 def setup_add_avatar(get_headers):
     headers = Auth().get_valid_user_headers(get_headers)
-    payload_user = PayloadUser().build_payload_add_user(userName="anitas", salutationName="Mrs.", firstName="anis", lastName="analia")
-    user = UserCall().create(headers, payload_user)   
+    payload_user = PayloadUser().build_payload_add_user(userName="anitas", salutationName="Mrs.", firstName="anis",
+                                                        lastName="analia")
+    user = UserCall().create(headers, payload_user)
     yield headers, user
 
     UserCall().delete(headers, user['id'])
+
 
 @pytest.fixture(scope="function")
 def setup_search_user(get_headers):
@@ -183,3 +185,36 @@ def setup_search_user(get_headers):
     UserCall().delete(headers, user2['id'])
     UserCall().delete(headers, user3['id'])
     UserCall().delete(headers, user4['id'])
+
+
+@pytest.fixture(scope="module")
+def setup_add_user_asc(get_headers):
+    headers = Auth().get_valid_user_headers(get_headers)
+    payload_user_1 = PayloadUser().build_payload_add_user(userName="sebastian", salutationName="Mrs.",
+                                                          firstName="andres",
+                                                          lastName="torrez")
+    payload_user_2 = PayloadUser().build_payload_add_user(userName="tini", salutationName="Mrs.",
+                                                          firstName="andres",
+                                                          lastName="torrez")
+    payload_user_3 = PayloadUser().build_payload_add_user(userName="paul", salutationName="Mrs.",
+                                                          firstName="andres",
+                                                          lastName="torrez")
+    payload_user_4 = PayloadUser().build_payload_add_user(userName="ronaldo", salutationName="Mrs.",
+                                                          firstName="andres",
+                                                          lastName="torrez")
+    payload_user_5 = PayloadUser().build_payload_add_user(userName="messi", salutationName="Mrs.",
+                                                          firstName="andres",
+                                                          lastName="torrez")
+    user1 = UserCall().create(headers, payload_user_1)
+    user2 = UserCall().create(headers, payload_user_2)
+    user3 = UserCall().create(headers, payload_user_3)
+    user4 = UserCall().create(headers, payload_user_4)
+    user5 = UserCall().create(headers, payload_user_5)
+
+    yield headers
+
+    UserCall().delete(headers, user1['id'])
+    UserCall().delete(headers, user2['id'])
+    UserCall().delete(headers, user3['id'])
+    UserCall().delete(headers, user4['id'])
+    UserCall().delete(headers, user5['id'])

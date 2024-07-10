@@ -19,7 +19,6 @@ def test_successful_role_update(setup_multiple_user):
     AssertionSchemas.validate_json_schema(response.json(), "test_update_multiple_users.json")
 
 
-@pytest.mark.smoke
 @pytest.mark.functional
 def test_invalid_user_role_update(setup_multiple_user, get_headers):
     headers, user1, user2, user3, user4 = setup_multiple_user
@@ -31,7 +30,6 @@ def test_invalid_user_role_update(setup_multiple_user, get_headers):
     AssertionStatusCode.assert_status_code_403(response)
 
 
-@pytest.mark.smoke
 @pytest.mark.functional
 @pytest.mark.xfail(reason="This test case is expected to fail due to known issue.", condition=True)
 def test_nonexistent_users_update(setup_multiple_user):
@@ -42,7 +40,6 @@ def test_nonexistent_users_update(setup_multiple_user):
     AssertionStatusCode.assert_status_code_404(response)
 
 
-@pytest.mark.smoke
 @pytest.mark.functional
 def test_add_role_invalid_permissions(setup_multiple_user, get_headers):
     headers, user1, user2, user3, user4 = setup_multiple_user
@@ -54,7 +51,6 @@ def test_add_role_invalid_permissions(setup_multiple_user, get_headers):
     AssertionStatusCode.assert_status_code_401(response)
 
 
-@pytest.mark.smoke
 @pytest.mark.functional
 @pytest.mark.xfail(reason="This test case is expected to fail due to known issue.", condition=True)
 def test_successful_custom_fields(setup_multiple_user):

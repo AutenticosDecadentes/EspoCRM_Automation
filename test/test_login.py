@@ -3,6 +3,7 @@ from src.espocrm_api.endpoint import Endpoint
 from src.assertions.status_code_assertions import AssertionStatusCode
 from src.resources.authentifications.authentification import Auth
 from src.espocrm_api.api_request import EspocrmRequest
+from conftest import get_headers
 
 
 @pytest.mark.smoke

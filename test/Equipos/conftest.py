@@ -6,7 +6,7 @@ from src.resources.call_request.team import TeamCall
 from src.resources.call_request.user import UserCall
 
 
-@pytest.fixture(scope="module")
+@pytest.fixture(scope="function")
 def setup_team_add_user(get_headers):
     headers = Auth().get_valid_user_headers(get_headers)
     payload_team = PayloadTeam().build_payload_add_team("Team Golden")
@@ -25,7 +25,7 @@ def setup_team_add_user(get_headers):
     UserCall().delete(headers, user2['id'])
 
 
-@pytest.fixture(scope="module")
+@pytest.fixture(scope="function")
 def setup_team_unlink_user(get_headers):
     headers = Auth().get_valid_user_headers(get_headers)
     payload_team = PayloadTeam().build_payload_add_team("Team Red")
@@ -47,7 +47,7 @@ def setup_team_unlink_user(get_headers):
     UserCall().delete(headers, user2['id'])
 
 
-@pytest.fixture(scope="module")
+@pytest.fixture(scope="function")
 def setup_create_user(get_headers):
     headers = Auth().get_valid_user_headers(get_headers)
     payload_user_1 = PayloadUser().build_payload_add_user(userName="charles", salutationName="Mrs.",
@@ -67,7 +67,7 @@ def setup_add_team(get_headers):
         TeamCall().delete(headers, team['id'])
 
 
-@pytest.fixture(scope="module")
+@pytest.fixture(scope="function")
 def setup_team_delete_multiple_team(get_headers):
     headers = Auth().get_valid_user_headers(get_headers)
     payload_team = PayloadTeam().build_payload_add_team("Team Golden")
@@ -77,7 +77,7 @@ def setup_team_delete_multiple_team(get_headers):
     yield headers, team, team2
 
 
-@pytest.fixture(scope="module")
+@pytest.fixture(scope="function")
 def setup_team_delete_multiple_one_team(get_headers):
     headers = Auth().get_valid_user_headers(get_headers)
     payload_team = PayloadTeam().build_payload_add_team("Team Golden")
@@ -88,14 +88,14 @@ def setup_team_delete_multiple_one_team(get_headers):
     TeamCall().delete(headers, team2['id'])
 
 
-@pytest.fixture(scope="module")
+@pytest.fixture(scope="function")
 def setup_team_delete_team(get_headers):
     headers = Auth().get_valid_user_headers(get_headers)
     payload_team = PayloadTeam().build_payload_add_team("Team Golden")
     team = TeamCall().create(headers, payload_team)
     yield headers, team
 
-@pytest.fixture(scope="module")
+@pytest.fixture(scope="function")
 def setup_team_delete_team_invalid(get_headers):
     headers = Auth().get_invalid_user_headers(get_headers)
     payload_team = PayloadTeam().build_payload_add_team("Team Golden")

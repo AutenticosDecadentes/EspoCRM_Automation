@@ -18,7 +18,6 @@ def setup_team_add_user(get_headers):
     payload_user_2 = PayloadUser().build_payload_add_user(userName="victorino", salutationName="Mrs.",
                                                           firstName="Victorino",
                                                           lastName="Perez")
-    payload = PayloadTeam().build_payload_add_user_team([payload_user_1['id']])
     team = TeamCall().create(headers, payload_team)
     user1 = UserCall().create(headers, payload_user_1)
     user2 = UserCall().create(headers, payload_user_2)

@@ -58,7 +58,7 @@ class EndpointTeams:
         return f"{BASE_URI}{base.format(team_id=team_id)}"
 
     @classmethod
-    def view(cls, team_id="667db6747f894544e"):
+    def view(cls, team_id):
         return cls.build_url_team_view(Endpoint.BASE_TEAM_VIEW.value, team_id)
 
     @staticmethod

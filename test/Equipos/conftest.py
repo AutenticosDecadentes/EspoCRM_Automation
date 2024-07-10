@@ -1,4 +1,7 @@
 import pytest
+
+from src.espocrm_api.api_request import EspocrmRequest
+from src.espocrm_api.endpoint_teams import EndpointTeams
 from src.resources.authentifications.authentification import Auth
 from src.payloads.payloads_team import PayloadTeam
 from src.payloads.payloads_user import PayloadUser
@@ -15,6 +18,7 @@ def setup_team_add_user(get_headers):
     payload_user_2 = PayloadUser().build_payload_add_user(userName="victorino", salutationName="Mrs.",
                                                           firstName="Victorino",
                                                           lastName="Perez")
+    payload = PayloadTeam().build_payload_add_user_team([payload_user_1['id']])
     team = TeamCall().create(headers, payload_team)
     user1 = UserCall().create(headers, payload_user_1)
     user2 = UserCall().create(headers, payload_user_2)
@@ -110,3 +114,39 @@ def setup_edit_team(get_headers):
     yield headers, team
     TeamCall().delete(headers, team['id'])
 
+
+@pytest.fixture(scope="function")
+def setup_add_user_team(get_headers):
+    headers = Auth().get_valid_user_headers(get_headers)
+    payload_team = PayloadTeam().build_payload_add_team("Team prueba")
+    payload_user_1 = PayloadUser().build_payload_add_user(userName="orlando001", salutationName="Mrs.", firstName="mike",
+                                                          lastName="wazouski")
+    payload_user_2 = PayloadUser().build_payload_add_user(userName="orlando002", salutationName="Mrs.",
+                                                          firstName="andres",
+                                                          lastName="torrez")
+    payload_user_3 = PayloadUser().build_payload_add_user(userName="orlando003", salutationName="Mrs.",
+                                                          firstName="andres",
+                                                          lastName="torrez")
+    payload_user_4 = PayloadUser().build_payload_add_user(userName="orlando004", salutationName="Mrs.",
+                                                          firstName="andres",
+                                                          lastName="torrez")
+    team = TeamCall().create(headers, payload_team)
+    user_1 = UserCall().create(headers, payload_user_1)
+    user_2 = UserCall().create(headers, payload_user_2)
+    user_3 = UserCall().create(headers, payload_user_3)
+    user_4 = UserCall().create(headers, payload_user_4)
+    payload_add_user1 = PayloadTeam().build_payload_add_user_team([user_1['id']])
+    payload_add_user2 = PayloadTeam().build_payload_add_user_team([user_2['id']])
+    payload_add_user3 = PayloadTeam().build_payload_add_user_team([user_3['id']])
+    payload_add_user4 = PayloadTeam().build_payload_add_user_team([user_4['id']])
+    EspocrmRequest().post(EndpointTeams.add_users(team['id']), headers, payload_add_user1)
+    EspocrmRequest().post(EndpointTeams.add_users(team['id']), headers, payload_add_user2)
+    EspocrmRequest().post(EndpointTeams.add_users(team['id']), headers, payload_add_user3)
+    EspocrmRequest().post(EndpointTeams.add_users(team['id']), headers, payload_add_user4)
+    yield headers, team
+
+    TeamCall().delete(headers, team['id'])
+    UserCall().delete(headers, user_1['id'])
+    UserCall().delete(headers, user_2['id'])
+    UserCall().delete(headers, user_3['id'])
+    UserCall().delete(headers, user_4['id'])

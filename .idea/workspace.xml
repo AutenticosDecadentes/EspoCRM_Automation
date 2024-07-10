@@ -46,27 +46,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python tests.Python tests for test_login.test_login_valido.executor": "Run",
-    "Python tests.Python tests in bin.executor": "Run",
-    "Python tests.Python tests in test_login.py.executor": "Run",
-    "Python tests.pytest in bin.executor": "Run",
-    "Python.EspoCRM_Automation.executor": "Run",
-    "Python.UseM_Automation.executor": "Run",
-    "Python.main.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "fixes",
-    "last_opened_file_path": "C:/Users/Nicole Rita/Documents/demo2sprint2endpoint2/EspoCRM_Automation",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python tests.Python tests for test_login.test_login_valido.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in bin.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in test_login.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.pytest in bin.executor&quot;: &quot;Run&quot;,
+    &quot;Python.EspoCRM_Automation.executor&quot;: &quot;Run&quot;,
+    &quot;Python.UseM_Automation.executor&quot;: &quot;Run&quot;,
+    &quot;Python.main.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;fixes&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Nicole Rita/Documents/demo2sprint2endpoint2/EspoCRM_Automation&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\migue\OneDrive\Escritorio\Diplo\Modulo 5\EspoCRM_Automation\src\espocrm_api" />

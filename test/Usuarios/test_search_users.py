@@ -84,8 +84,8 @@ def test_search_user_by_invalid_email(setup_search_user):
 #
 @pytest.mark.regression
 @pytest.mark.functional
-def test_search_user_empty_field(get_headers):
-    headers, user1, user2, user3, user4 = Auth().get_valid_user_headers(get_headers)
+def test_search_user_empty_field(setup_search_user):
+    headers, user1, user2, user3, user4 = setup_search_user
     response = EspocrmRequest().get(EndpointUsers.search_usuers(where=""), headers)
     AssertionStatusCode().assert_status_code_200(response)
     AssertionSchemas().assert_users_search_schema_file(response.json())

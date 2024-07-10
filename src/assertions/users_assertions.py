@@ -64,3 +64,13 @@ class AssertionUsers:
         assert response_data['to'] == expected_email, f"Expected email {expected_email} but got {response_data['to']}"
         assert response_data[
                    'subject'] == expected_subject, f"Expected subject {expected_subject} but got {response_data['subject']}"
+
+
+
+    @staticmethod
+    def assert_email_with_cc_and_bcc(response, expected_cc, expected_bcc):
+        response_data = response.json()
+        assert response_data[
+                   "cc"] == expected_cc, f"Expected cc field to be {expected_cc}, but got {response_data['cc']}."
+        assert response_data[
+                   "bcc"] == expected_bcc, f"Expected bcc field to be {expected_bcc}, but got {response_data['bcc']}."

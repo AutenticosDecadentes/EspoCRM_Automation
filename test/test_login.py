@@ -17,6 +17,3 @@ def test_invalid_login(get_headers):
     headers = Auth().get_invalid_user_headers(get_headers)
     response = EspocrmRequest().get(Endpoint.login(), headers)
     AssertionStatusCode().assert_status_code_401(response)
-
-
-

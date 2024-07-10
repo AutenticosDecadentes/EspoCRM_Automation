@@ -12,7 +12,7 @@ from src.resources.call_request.user import UserCall
 @pytest.fixture(scope="function")
 def setup_team_add_user(get_headers):
     headers = Auth().get_valid_user_headers(get_headers)
-    payload_team = PayloadTeam().build_payload_add_team("Team Golden")
+    payload_team = PayloadTeam().build_payload_add_team("Team White")
     payload_user_1 = PayloadUser().build_payload_add_user(userName="darwin", salutationName="Mrs.", firstName="Darwin",
                                                           lastName="Garcia")
     payload_user_2 = PayloadUser().build_payload_add_user(userName="victorino", salutationName="Mrs.",
@@ -98,12 +98,14 @@ def setup_team_delete_team(get_headers):
     team = TeamCall().create(headers, payload_team)
     yield headers, team
 
+
 @pytest.fixture(scope="function")
 def setup_team_delete_team_invalid(get_headers):
     headers = Auth().get_invalid_user_headers(get_headers)
     payload_team = PayloadTeam().build_payload_add_team("Team Golden")
     team = TeamCall().create(headers, payload_team)
     yield headers, team
+
 
 @pytest.fixture(scope="function")
 def setup_edit_team(get_headers):
@@ -118,7 +120,8 @@ def setup_edit_team(get_headers):
 def setup_add_user_team(get_headers):
     headers = Auth().get_valid_user_headers(get_headers)
     payload_team = PayloadTeam().build_payload_add_team("Team prueba")
-    payload_user_1 = PayloadUser().build_payload_add_user(userName="orlando001", salutationName="Mrs.", firstName="mike",
+    payload_user_1 = PayloadUser().build_payload_add_user(userName="orlando001", salutationName="Mrs.",
+                                                          firstName="mike",
                                                           lastName="wazouski")
     payload_user_2 = PayloadUser().build_payload_add_user(userName="orlando002", salutationName="Mrs.",
                                                           firstName="andres",
@@ -149,3 +152,32 @@ def setup_add_user_team(get_headers):
     UserCall().delete(headers, user_2['id'])
     UserCall().delete(headers, user_3['id'])
     UserCall().delete(headers, user_4['id'])
+
+
+@pytest.fixture(scope="module")
+def setup_teardown_list_teams(get_headers):
+    headers = Auth().get_valid_user_headers(get_headers)
+
+    payloads = [
+        PayloadTeam().build_payload_add_team("Alpha 1"),
+        PayloadTeam().build_payload_add_team("bravo 2"),
+        PayloadTeam().build_payload_add_team("Charlie 3"),
+        PayloadTeam().build_payload_add_team("delta 4"),
+        PayloadTeam().build_payload_add_team("Echo 5"),
+        PayloadTeam().build_payload_add_team("foxtrot 6"),
+        PayloadTeam().build_payload_add_team("Golf 7"),
+        PayloadTeam().build_payload_add_team("hotel 8"),
+        PayloadTeam().build_payload_add_team("India 9"),
+        PayloadTeam().build_payload_add_team("juliet 10")
+    ]
+
+    created_teams = []
+
+    for payload in payloads:
+        response = TeamCall().create(headers, payload)
+        created_teams.append(response['id'])
+
+    yield headers
+
+    for team_id in created_teams:
+        TeamCall().delete(headers, team_id)

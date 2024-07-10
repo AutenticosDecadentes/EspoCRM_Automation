@@ -12,8 +12,8 @@ from src.payloads.payloads_user import PayloadUser
 @pytest.mark.functional
 def test_send_user_email_with_required_fields(setup_teardown_user):
     headers, user = setup_teardown_user
-    payload = PayloadUser().build_payload_email(to=user["emailAddress"],subject="Prueba")
-    response = EspocrmRequest().post(Endpoint.email(),headers,payload)
+    payload = PayloadUser().build_payload_email(to=user["emailAddress"], subject="Prueba")
+    response = EspocrmRequest().post(Endpoint.email(), headers, payload)
     AssertionStatusCode().assert_status_code_200(response)
     AssertionUsers().assert_response_is_not_empty(response)
     response_data = response.json()

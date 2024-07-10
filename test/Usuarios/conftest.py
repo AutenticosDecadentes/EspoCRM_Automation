@@ -36,7 +36,9 @@ def setup_teardown_user(get_headers):
         emailAddress="n.rita.veizaga.aguilar@gmail.com",
         emailAddressData=email_address_data
     )
+
     user = UserCall().create(headers, payload_user_1)
+
     yield headers, user
 
     UserCall().delete(headers, user["id"])

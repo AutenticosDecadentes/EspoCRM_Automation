@@ -15,7 +15,6 @@ def test_duplicate_data_user_with_valid_id(setup_duplicate_data_team):
     AssertionSchemas().assert_user_duplicate_data_schema_payload_file(payload)
     response = EspocrmRequest().post(EndpointUsers.duplicate_data(), headers, payload)
     AssertionStatusCode().assert_status_code_200(response)
-    print(response.json())
     AssertionSchemas().assert_user_duplicate_data_schema_file(response.json())
 
 

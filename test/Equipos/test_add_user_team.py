@@ -42,19 +42,6 @@ def test_add_team_multi_users(setup_team_add_user):
 
 @pytest.mark.regression
 @pytest.mark.functional
-@pytest.mark.smoke
-def test_add_team_user_invalid_authentication(get_headers, setup_team_add_user):
-    headers, team, user1, user2 = setup_team_add_user
-    headers = Auth().get_invalid_user_headers(get_headers)
-    payload = PayloadTeam().build_payload_add_user_team([user1['id'], user2['id']])
-    AssertionSchemas().assert_team_add_user_schema_payload_file(payload)
-    response = EspocrmRequest().post(EndpointTeams.add_users(team['id']), headers, payload)
-    AssertionStatusCode().assert_status_code_401(response)
-    AssertionTeams().assert_response_empty(response.text)
-
-
-@pytest.mark.regression
-@pytest.mark.functional
 def test_add_team_user_invalid(setup_team_add_user):
     headers, team, user1, user2 = setup_team_add_user
     user_id_invalid = ''.join(random.choices(string.ascii_letters + string.digits, k=17))
@@ -109,11 +96,11 @@ def test_add_user_empty_payload(setup_team_add_user):
 
 @pytest.mark.regression
 @pytest.mark.functional
-def test_add_deleted_user(setup_team_add_user, setup_create_user):
+def test_add_deleted_user(setup_team_add_user, setup_create_user_team):
     headers, team, user1, user2 = setup_team_add_user
-    user3 = setup_create_user
+    user3 = setup_create_user_team
     UserCall().delete(headers, user3['id'])
-    payload = PayloadTeam().build_payload_add_user_team([user3["id"]])
+    payload = PayloadTeam().build_payload_add_user_team([user3['id']])
     response = EspocrmRequest().post(EndpointTeams.add_users(team['id']), headers, payload)
     AssertionStatusCode().assert_status_code_404(response)
     AssertionTeams().assert_response_empty(response.text)

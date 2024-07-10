@@ -17,7 +17,6 @@ def test_view_team_additional_headers(get_headers):  # 52
 
 @pytest.mark.regression
 @pytest.mark.functional
-
 def test_view_team_incorrect_http_method(get_headers):  # 51
     headers = Auth().get_valid_user_headers(get_headers)
     response = EspocrmRequest().post(EndpointTeams.view(), headers)

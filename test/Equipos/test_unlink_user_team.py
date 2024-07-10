@@ -28,8 +28,8 @@ def test_unlink_team_user_exists(setup_team_unlink_user):
 @pytest.mark.regression
 @pytest.mark.functional
 def test_unlink_team_user_invalid_authentication(setup_team_unlink_user, get_headers):
-    headers, team, user1, user2 = setup_team_unlink_user
     headers = Auth().get_invalid_user_headers(get_headers)
+    valid_users, team, user1, user2 = setup_team_unlink_user
     payload = PayloadTeam().build_payload_unlink_user_team(user1['id'])
     AssertionSchemas().assert_team_unlink_user_schema_payload_file(payload)
     response = EspocrmRequest().delete(EndpointTeams.delete_users(team['id']), headers, payload)
@@ -78,8 +78,8 @@ def test_unlink_user_exist_in_team(setup_team_unlink_user):
 @pytest.mark.regression
 @pytest.mark.functional
 def test_unlink_team_user_unauthorized(setup_team_unlink_user, get_headers):
-    headers, team, user1, user2 = setup_team_unlink_user
     headers = Auth().get_unauthorized_teams_user_headers(get_headers)
+    valid_users, team, user1, user2 = setup_team_unlink_user
     payload = PayloadTeam().build_payload_unlink_user_team(user1['id'])
     AssertionSchemas().assert_team_unlink_user_schema_payload_file(payload)
     response = EspocrmRequest().delete(EndpointTeams.delete_users(team['id']), headers, payload)

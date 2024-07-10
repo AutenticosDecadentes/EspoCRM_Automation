@@ -28,3 +28,29 @@ def test_duplicate_data_user_with_invalid_id(setup_teardown_user):
     response = EspocrmRequest().post(EndpointUsers.duplicate_data(), headers, payload)
     AssertionStatusCode().assert_status_code_400(response)
 
+
+@pytest.mark.smoke
+@pytest.mark.functional
+def test_duplicate_data_user_without_authentication(setup_teardown_user):
+    headers, user = setup_teardown_user
+    headersInvalid = {"accept": "/"}
+    payload = PayloadUser().build_payload_duplicate_data_user(user['id'])
+    response = EspocrmRequest().post(EndpointUsers.duplicate_data(), headersInvalid, payload)
+    print(response)
+    AssertionStatusCode().assert_status_code_401(response)
+
+
+@pytest.mark.regression
+@pytest.mark.functional
+def test_duplicate_data_user_with_different_user_ids(setup_multiple_user):
+    headers, user1, user2, user3, user4 = setup_multiple_user
+    payload = PayloadUser().build_payload_duplicate_data_user(user1['id'])
+    AssertionSchemas().assert_user_duplicate_data_schema_payload_file(payload)
+    response = EspocrmRequest().post(EndpointUsers.duplicate_data(), headers, payload)
+    AssertionStatusCode().assert_status_code_200(response)
+    payload2 = PayloadUser().build_payload_duplicate_data_user(user2['id'])
+    AssertionSchemas().assert_user_duplicate_data_schema_payload_file(payload2)
+    response2 = EspocrmRequest().post(EndpointUsers.duplicate_data(), headers, payload2)
+    AssertionStatusCode().assert_status_code_200(response2)
+
+

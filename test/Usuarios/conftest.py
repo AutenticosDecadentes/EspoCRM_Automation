@@ -84,7 +84,7 @@ def setup_multiple_user(get_headers):
 
 
 @pytest.fixture(scope="function")
-def setup_duplicate_data_team(get_headers):
+def setup_duplicate_data_user(get_headers):
     headers = Auth().get_valid_user_headers(get_headers)
     payload_user = PayloadUser().build_payload_add_user(userName="nicole", salutationName="Mrs.", firstName="Nico",
                                                           lastName="Vega")

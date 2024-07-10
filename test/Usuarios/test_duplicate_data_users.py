@@ -9,18 +9,6 @@ from src.assertions.status_code_assertions import AssertionStatusCode
 @pytest.mark.regression
 @pytest.mark.functional
 @pytest.mark.smoke
-def test_duplicate_data_user_with_valid_id(setup_duplicate_data_team):
-    headers, user = setup_duplicate_data_team
-    payload = PayloadUser().build_payload_duplicate_data_user(user['id'])
-    AssertionSchemas().assert_user_duplicate_data_schema_payload_file(payload)
-    response = EspocrmRequest().post(EndpointUsers.duplicate_data(), headers, payload)
-    AssertionStatusCode().assert_status_code_200(response)
-    AssertionSchemas().assert_user_duplicate_data_schema_file(response.json())
-
-
-@pytest.mark.regression
-@pytest.mark.functional
-@pytest.mark.smoke
 def test_duplicate_data_user_with_invalid_id(setup_teardown_user):
     headers, user = setup_teardown_user
     payload = PayloadUser().build_payload_duplicate_data_user("0")

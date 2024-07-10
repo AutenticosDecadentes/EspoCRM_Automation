@@ -99,6 +99,14 @@ def setup_team_delete_team(get_headers):
     yield headers, team
 
 @pytest.fixture(scope="function")
+def setup_team_view_team(get_headers):
+    headers = Auth().get_valid_user_headers(get_headers)
+    payload_team = PayloadTeam().build_payload_add_team("Team Golden")
+    team = TeamCall().create(headers, payload_team)
+    yield headers, team
+    TeamCall().delete(headers, team['id'])
+
+@pytest.fixture(scope="function")
 def setup_team_delete_team_invalid(get_headers):
     headers = Auth().get_invalid_user_headers(get_headers)
     payload_team = PayloadTeam().build_payload_add_team("Team Golden")

@@ -52,13 +52,11 @@ def test_add_user_duplicate_userName(setup_add_user):
                                                    password="",
                                                    passwordConfirm="")
     response = EspocrmRequest().post(EndpointUsers.user(), headers, payload)
-    print(response)
     AssertionStatusCode().assert_status_code_200(response)
     AssertionSchemas().assert_add_user_schema_file(response.json())
     created_user = response.json()
     created_users.append(created_user)
     response1 = EspocrmRequest().post(EndpointUsers.user(), headers, payload)
-    print(response1)
     AssertionStatusCode().assert_status_code_409(response1)
 
 

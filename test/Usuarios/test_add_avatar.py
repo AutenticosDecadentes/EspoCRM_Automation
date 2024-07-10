@@ -1,6 +1,5 @@
 import pytest
 from src.espocrm_api.endpoint_users import EndpointUsers
-from src.payloads.payloads_user import PayloadUser
 from src.espocrm_api.api_request import EspocrmRequest
 from src.assertions.status_code_assertions import AssertionStatusCode
 from src.payloads.payload_avatar import PayloadAvatar

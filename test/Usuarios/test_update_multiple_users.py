@@ -5,7 +5,6 @@ from src.assertions.status_code_assertions import AssertionStatusCode
 from src.espocrm_api.api_request import EspocrmRequest
 from src.espocrm_api.endpoint import Endpoint
 from src.resources.authentifications.authentification import Auth
-from src.espocrm_api.endpoint_users import EndpointUsers
 
 
 @pytest.mark.smoke

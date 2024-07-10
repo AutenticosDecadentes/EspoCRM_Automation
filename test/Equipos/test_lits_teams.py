@@ -6,6 +6,7 @@ from src.assertions.status_code_assertions import AssertionStatusCode
 from src.assertions.schema_assertions import AssertionSchemas
 from src.assertions.teams_assertions import AssertionTeams
 
+
 @pytest.mark.regression
 @pytest.mark.functional
 def test_list_teams_with_data(get_headers):

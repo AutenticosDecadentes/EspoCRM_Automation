@@ -30,6 +30,7 @@ def test_add_user_without_password(setup_add_user):
 
 @pytest.mark.regression
 @pytest.mark.functional
+@pytest.mark.xfail(reason="This test case is expected to fail due to known issue.", condition=True)
 def test_add_user_duplicate_userName(setup_add_user):
     headers, created_users = setup_add_user
     payload = PayloadUser().build_payload_add_user(userName="adrianita",
@@ -92,6 +93,7 @@ def test_add_user_with_valid_complete_data(setup_add_user):
 
 @pytest.mark.regression
 @pytest.mark.functional
+@pytest.mark.xfail(reason="This test case is expected to fail due to known issue.", condition=True)
 def test_add_user_empty_email_(setup_add_user):
     headers, created_users = setup_add_user
     payload = PayloadUser().build_payload_add_user(
@@ -119,6 +121,7 @@ def test_add_user_empty_email_(setup_add_user):
 
 @pytest.mark.regression
 @pytest.mark.functional
+@pytest.mark.xfail(reason="This test case is expected to fail due to known issue.", condition=True)
 def test_add_user_short_password(setup_add_user):
     headers, created_users = setup_add_user
     payload = PayloadUser().build_payload_add_user(

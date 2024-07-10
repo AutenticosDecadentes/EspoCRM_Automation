@@ -9,7 +9,6 @@ from src.assertions.schema_assertions import AssertionSchemas
 @pytest.mark.regression
 @pytest.mark.functional
 @pytest.mark.smoke
-@pytest.mark.testEddyRecover
 def test_view_team_additional_headers(setup_team_view_team, get_headers):  # 52
     headers, team = setup_team_view_team
     additional_headers = {'header_extra': 'value_extra'}
@@ -19,7 +18,6 @@ def test_view_team_additional_headers(setup_team_view_team, get_headers):  # 52
 
 @pytest.mark.regression
 @pytest.mark.functional
-@pytest.mark.testEddyRecover
 def test_view_team_incorrect_http_method(setup_team_view_team):  # 51
     headers, team = setup_team_view_team
     response = EspocrmRequest().post(EndpointTeams.view(team['id']), headers)
@@ -29,7 +27,6 @@ def test_view_team_incorrect_http_method(setup_team_view_team):  # 51
 @pytest.mark.regression
 @pytest.mark.functional
 @pytest.mark.smoke
-@pytest.mark.testEddyRecover
 def test_view_team_correct(setup_team_view_team):  # 46
     headers, team = setup_team_view_team
     response = EspocrmRequest().get(EndpointTeams.view(team['id']), headers)
@@ -39,7 +36,6 @@ def test_view_team_correct(setup_team_view_team):  # 46
 
 @pytest.mark.regression
 @pytest.mark.functional
-@pytest.mark.testEddyRecover
 def test_view_team_incorrect_authorization(setup_team_view_team,get_headers):  # 48
     headers, team = setup_team_view_team
     headersInvalid = Auth().get_invalid_user_headers(get_headers)
@@ -49,7 +45,6 @@ def test_view_team_incorrect_authorization(setup_team_view_team,get_headers):  #
 
 @pytest.mark.regression
 @pytest.mark.functional
-@pytest.mark.testEddyRecover
 def test_view_team_without_authorization(setup_team_view_team, get_headers):  # 47
     headers, team = setup_team_view_team
     headersEmpty = Auth().get_empty_user_headers(get_headers)
@@ -59,7 +54,6 @@ def test_view_team_without_authorization(setup_team_view_team, get_headers):  # 
 
 @pytest.mark.regression
 @pytest.mark.functional
-@pytest.mark.testEddyRecover
 def test_view_team_id_not_exists(get_headers):  # 49
     headers = Auth().get_valid_user_headers(get_headers)
     response = EspocrmRequest().get(EndpointTeams.view(team_id="id_no_existente"), headers)
@@ -68,7 +62,6 @@ def test_view_team_id_not_exists(get_headers):  # 49
 
 @pytest.mark.regression
 @pytest.mark.functional
-@pytest.mark.testEddyRecover
 def test_view_team_id_incorrect_format(get_headers):  #
     headers = Auth().get_valid_user_headers(get_headers)
     response = EspocrmRequest().get(EndpointTeams.view(team_id="formatoIncorrecto"), headers)

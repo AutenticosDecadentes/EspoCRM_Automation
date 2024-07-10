@@ -35,8 +35,32 @@ def test_invalid_user_role_update(setup_multiple_user, get_headers):
 @pytest.mark.functional
 @pytest.mark.xfail(reason="This test case is expected to fail due to known issue.", condition=True)
 def test_nonexistent_users_update(setup_multiple_user):
-    headers, user1, user2, user3, user4 = setup_multiple_user
+    headers = setup_multiple_user
     nonexistent_user_ids = ["nonexistent_id_1", "nonexistent_id_2", "nonexistent_id_3"]
     payload = PayloadUser().build_payload_update_users_roles(nonexistent_user_ids, "66758f2c021e4e23f")
     response = EspocrmRequest().post(Endpoint.massAction(), headers, payload)
     AssertionStatusCode.assert_status_code_404(response)
+
+
+@pytest.mark.smoke
+@pytest.mark.functional
+def test_add_role_invalid_permissions(setup_multiple_user, get_headers):
+    headers, user1, user2, user3, user4 = setup_multiple_user
+    headers1 = Auth().get_disabled_user_headers(get_headers)
+    user_ids = [user1['id'], user2['id'], user3['id'], user4['id']]
+    payload = PayloadUser().build_payload_update_users_roles(user_ids, "66758f2c021e4e23f")
+    AssertionSchemas().assert_user_update_multiple_users_schema_payload_file(payload)
+    response = EspocrmRequest().post(Endpoint.massAction(), headers1, payload)
+    AssertionStatusCode.assert_status_code_401(response)
+
+
+@pytest.mark.smoke
+@pytest.mark.functional
+@pytest.mark.xfail(reason="This test case is expected to fail due to known issue.", condition=True)
+def test_successful_role_update(setup_multiple_user):
+    headers, user1, user2, user3, user4 = setup_multiple_user
+    user_ids = [user1['id'], user2['id'], user3['id'], user4['id']]
+    payload = PayloadUser().build_payload_update_users_roles(user_ids, "0a0a0a0a0a0a0a0a0")
+    AssertionSchemas().assert_user_update_multiple_users_schema_payload_file(payload)
+    response = EspocrmRequest().post(Endpoint.massAction(), headers, payload)
+    AssertionStatusCode.assert_status_code_400(response)

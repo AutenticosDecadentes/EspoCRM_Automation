@@ -102,3 +102,84 @@ def setup_add_avatar(get_headers):
 
     UserCall().delete(headers, user['id'])
 
+@pytest.fixture(scope="function")
+def setup_search_user(get_headers):
+    headers = Auth().get_valid_user_headers(get_headers)
+    email_address_data1 = [
+        {
+            "emailAddress": "diego.acosta@gmail.com",
+            "primary": True,
+            "optOut": False,
+            "invalid": False,
+            "lower": "diego.acosta@gmail.com"
+        }
+    ]
+    payload_user_1 = PayloadUser().build_payload_add_user(
+        userName="diego_prueba",
+        salutationName="Mr.",
+        firstName="DiegoUno",
+        lastName="uno",
+        emailAddress="diego.acosta@gmail.com",
+        emailAddressData=email_address_data1
+    )
+    email_address_data2 = [
+        {
+            "emailAddress": "diego.dos@gmail.com",
+            "primary": True,
+            "optOut": False,
+            "invalid": False,
+            "lower": "diego.dos@gmail.com"
+        }
+    ]
+    payload_user_2 = PayloadUser().build_payload_add_user(
+        userName="diego_prueba2",
+        salutationName="Mr.",
+        firstName="DiegoDos",
+        lastName="dos",
+        emailAddress="diego.dos@gmail.com",
+        emailAddressData=email_address_data2
+    )
+    email_address_data3 = [
+        {
+            "emailAddress": "diego.tres@gmail.com",
+            "primary": True,
+            "optOut": False,
+            "invalid": False,
+            "lower": "diego.tres@gmail.com"
+        }
+    ]
+    payload_user_3 = PayloadUser().build_payload_add_user(
+        userName="diego_prueba3",
+        salutationName="Mr.",
+        firstName="DiegoTres",
+        lastName="tres",
+        emailAddress="diego.tres@gmail.com",
+        emailAddressData=email_address_data3
+    )
+    email_address_data4 = [
+        {
+            "emailAddress": "diego.cuatro@gmail.com",
+            "primary": True,
+            "optOut": False,
+            "invalid": False,
+            "lower": "diego.cuatro@gmail.com"
+        }
+    ]
+    payload_user_4 = PayloadUser().build_payload_add_user(
+        userName="diego_prueba4",
+        salutationName="Mr.",
+        firstName="DiegoCuatro",
+        lastName="cuatro",
+        emailAddress="diego.cuatro@gmail.com",
+        emailAddressData=email_address_data1
+    )
+    user1 = UserCall().create(headers, payload_user_1)
+    user2 = UserCall().create(headers, payload_user_2)
+    user3 = UserCall().create(headers, payload_user_3)
+    user4 = UserCall().create(headers, payload_user_4)
+    yield headers, user1, user2, user3, user4
+
+    UserCall().delete(headers, user1['id'])
+    UserCall().delete(headers, user2['id'])
+    UserCall().delete(headers, user3['id'])
+    UserCall().delete(headers, user4['id'])

@@ -83,7 +83,6 @@ def test_list_teams_select_special(setup_teardown_list_teams):
 @pytest.mark.smoke
 @pytest.mark.regression
 @pytest.mark.functional
-@pytest.mark.lol
 def test_list_teams_invalid_authentication(get_headers):
     headers = Auth().get_invalid_user_headers(get_headers)
     response = EspocrmRequest().get(EndpointTeams.list(), headers)

@@ -71,20 +71,7 @@ def test_add_user_with_valid_complete_data(setup_add_user):
                                                    type="admin",
                                                    salutationName="Mr.",
                                                    firstName="vimara",
-                                                   lastName="mara",
-                                                   isActive=True,
-                                                   emailAddress="vianquis00@gmail.com",
-                                                   phoneNumber="+59172255555",
-                                                   gender="Male",
-                                                   rolesIds="66758ef1d775a381e",
-                                                   rolesNames={"66758ef1d775a381e": "Administrador"},
-                                                   workingTimeCalendarId="667594aa8582445d8",
-                                                   workingTimeCalendarName="Calendar",
-                                                   layoutSetId="6675949a021ad4859",
-                                                   layoutSetName="Layout 1",
-                                                   deleteId="0",
-                                                   password="",
-                                                   passwordConfirm="")
+                                                   lastName="mara")
     response = EspocrmRequest().post(EndpointUsers.user(), headers, payload)
     AssertionStatusCode().assert_status_code_200(response)
     created_user = response.json()

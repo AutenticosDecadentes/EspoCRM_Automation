@@ -1,0 +1,211 @@
+{
+    "type": "object",
+    "required": [
+        "accountsIds",
+        "accountsNames",
+        "apiKey",
+        "auth2FA",
+        "authMethod",
+        "avatarColor",
+        "avatarId",
+        "avatarName",
+        "contactId",
+        "contactName",
+        "createdAt",
+        "createdById",
+        "createdByName",
+        "dashboardTemplateId",
+        "dashboardTemplateName",
+        "defaultTeamId",
+        "defaultTeamName",
+        "deleted",
+        "emailAddress",
+        "emailAddressData",
+        "emailAddressIsInvalid",
+        "emailAddressIsOptedOut",
+        "firstName",
+        "gender",
+        "isActive",
+        "lastAccess",
+        "lastName",
+        "layoutSetId",
+        "layoutSetName",
+        "middleName",
+        "modifiedAt",
+        "name",
+        "phoneNumber",
+        "phoneNumberData",
+        "phoneNumberIsInvalid",
+        "phoneNumberIsOptedOut",
+        "portalRolesIds",
+        "portalRolesNames",
+        "portalsIds",
+        "portalsNames",
+        "rolesIds",
+        "rolesNames",
+        "salutationName",
+        "teamsColumns",
+        "teamsIds",
+        "teamsNames",
+        "title",
+        "type",
+        "userName",
+        "workingTimeCalendarId",
+        "workingTimeCalendarName"
+    ],
+    "properties": {
+        "name": {
+            "type": "string"
+        },
+        "deleted": {
+            "type": "boolean"
+        },
+        "userName": {
+            "type": "string"
+        },
+        "type": {
+            "type": "string"
+        },
+        "authMethod": {
+            "type": "null"
+        },
+        "apiKey": {
+            "type": "null"
+        },
+        "salutationName": {
+            "type": "string"
+        },
+        "firstName": {
+            "type": "string"
+        },
+        "lastName": {
+            "type": "string"
+        },
+        "isActive": {
+            "type": "boolean"
+        },
+        "title": {
+            "type": "null"
+        },
+        "emailAddress": {
+            "type": "null"
+        },
+        "phoneNumber": {
+            "type": "null"
+        },
+        "avatarColor": {
+            "type": "null"
+        },
+        "gender": {
+            "type": "null"
+        },
+        "createdAt": {
+            "type": "string"
+        },
+        "modifiedAt": {
+            "type": "string"
+        },
+        "auth2FA": {
+            "type": "null"
+        },
+        "lastAccess": {
+            "type": "null"
+        },
+        "middleName": {
+            "type": "null"
+        },
+        "emailAddressIsOptedOut": {
+            "type": "null"
+        },
+        "emailAddressIsInvalid": {
+            "type": "null"
+        },
+        "phoneNumberIsOptedOut": {
+            "type": "null"
+        },
+        "phoneNumberIsInvalid": {
+            "type": "null"
+        },
+        "emailAddressData": {
+            "type": "array"
+        },
+        "phoneNumberData": {
+            "type": "array"
+        },
+        "defaultTeamId": {
+            "type": "null"
+        },
+        "defaultTeamName": {
+            "type": "null"
+        },
+        "teamsIds": {
+            "type": "array"
+        },
+        "teamsNames": {
+            "type": "object"
+        },
+        "teamsColumns": {
+            "type": "object"
+        },
+        "rolesIds": {
+            "type": "array"
+        },
+        "rolesNames": {
+            "type": "object"
+        },
+        "portalsIds": {
+            "type": "array"
+        },
+        "portalsNames": {
+            "type": "object"
+        },
+        "portalRolesIds": {
+            "type": "array"
+        },
+        "portalRolesNames": {
+            "type": "object"
+        },
+        "contactId": {
+            "type": "null"
+        },
+        "contactName": {
+            "type": "null"
+        },
+        "accountsIds": {
+            "type": "array"
+        },
+        "accountsNames": {
+            "type": "object"
+        },
+        "avatarId": {
+            "type": "null"
+        },
+        "avatarName": {
+            "type": "null"
+        },
+        "createdById": {
+            "type": "string"
+        },
+        "createdByName": {
+            "type": "string"
+        },
+        "dashboardTemplateId": {
+            "type": "null"
+        },
+        "dashboardTemplateName": {
+            "type": "null"
+        },
+        "workingTimeCalendarId": {
+            "type": "null"
+        },
+        "workingTimeCalendarName": {
+            "type": "null"
+        },
+        "layoutSetId": {
+            "type": "null"
+        },
+        "layoutSetName": {
+            "type": "null"
+        }
+    }
+}

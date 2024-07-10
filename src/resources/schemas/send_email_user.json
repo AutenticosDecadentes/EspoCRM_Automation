@@ -1,0 +1,158 @@
+{
+  "id": "string",
+  "name": "string",
+  "deleted": "boolean",
+  "subject": "string",
+  "fromName": "string",
+  "fromAddress": "string",
+  "fromString": "string",
+  "from": "string",
+  "to": "string",
+  "cc": "string",
+  "bcc": "string",
+  "replyTo": "string",
+  "isRead": "boolean",
+  "isNotRead": "boolean",
+  "isReplied": "boolean",
+  "isNotReplied": "boolean",
+  "isImportant": "boolean",
+  "inTrash": "boolean",
+  "folderId": ["null", "string"],
+  "isUsers": "boolean",
+  "nameHash": {
+    "type": "object",
+    "additionalProperties": "string"
+  },
+  "typeHash": {
+    "type": "object",
+    "additionalProperties": "string"
+  },
+  "idHash": {
+    "type": "object",
+    "additionalProperties": "string"
+  },
+  "messageId": "string",
+  "bodyPlain": "string",
+  "body": ["null", "string"],
+  "isHtml": "boolean",
+  "status": "string",
+  "hasAttachment": "boolean",
+  "dateSent": "string",
+  "createdAt": "string",
+  "modifiedAt": "string",
+  "isSystem": "boolean",
+  "isJustSent": "boolean",
+  "isBeingImported": "boolean",
+  "fromEmailAddressId": "string",
+  "fromEmailAddressName": "string",
+  "toEmailAddressesIds": {
+    "type": "array",
+    "items": "string"
+  },
+  "toEmailAddressesNames": {
+    "type": "object",
+    "additionalProperties": "string"
+  },
+  "ccEmailAddressesIds": {
+    "type": "array",
+    "items": "string"
+  },
+  "ccEmailAddressesNames": {
+    "type": "object",
+    "additionalProperties": "string"
+  },
+  "bccEmailAddressesIds": {
+    "type": "array",
+    "items": "string"
+  },
+  "bccEmailAddressesNames": {
+    "type": "object",
+    "additionalProperties": "string"
+  },
+  "replyToEmailAddressesIds": {
+    "type": "array",
+    "items": "string"
+  },
+  "replyToEmailAddressesNames": {
+    "type": "object",
+    "additionalProperties": "string"
+  },
+  "attachmentsIds": {
+    "type": "array",
+    "items": "string"
+  },
+  "attachmentsNames": {
+    "type": "object",
+    "additionalProperties": "string"
+  },
+  "parentId": ["null", "string"],
+  "parentType": ["null", "string"],
+  "parentName": ["null", "string"],
+  "createdById": "string",
+  "createdByName": "string",
+  "sentById": "string",
+  "sentByName": "string",
+  "modifiedById": "string",
+  "modifiedByName": "string",
+  "assignedUserName": ["null", "string"],
+  "repliedName": ["null", "string"],
+  "repliesIds": {
+    "type": "array",
+    "items": "string"
+  },
+  "repliesNames": {
+    "type": "object",
+    "additionalProperties": "string"
+  },
+  "repliesColumns": {
+    "type": "object",
+    "additionalProperties": "object"
+  },
+  "teamsIds": {
+    "type": "array",
+    "items": "string"
+  },
+  "teamsNames": {
+    "type": "object",
+    "additionalProperties": "string"
+  },
+  "usersIds": {
+    "type": "array",
+    "items": "string"
+  },
+  "usersNames": {
+    "type": "object",
+    "additionalProperties": "string"
+  },
+  "usersColumns": {
+    "type": "object",
+    "additionalProperties": "object"
+  },
+  "assignedUsersIds": {
+    "type": "array",
+    "items": "string"
+  },
+  "assignedUsersNames": {
+    "type": "object",
+    "additionalProperties": "string"
+  },
+  "createdEventName": ["null", "string"],
+  "groupFolderName": ["null", "string"],
+  "accountName": ["null", "string"],
+  "tasksIds": {
+    "type": "array",
+    "items": "string"
+  },
+  "tasksNames": {
+    "type": "object",
+    "additionalProperties": "string"
+  },
+  "tasksColumns": {
+    "type": "object",
+    "additionalProperties": "object"
+  },
+  "attachmentsTypes": {
+    "type": "object",
+    "additionalProperties": "string"
+  }
+}
